@@ -126,4 +126,5 @@ var keyed=new Map();pending.forEach(function(r){keyed.set((r.stock_code||r.compa
 all=Array.from(keyed.values()).sort(function(a,b){return String(b.listing_date||"").localeCompare(String(a.listing_date||""))});el("sync").textContent="마지막 갱신 "+(updated||"미확인");initFilters();filter();
 }).catch(function(e){el("sync").textContent="DB 읽기 오류";el("statusmessage").textContent="데이터 파일을 불러오지 못했습니다: "+e.message;el("tbody").innerHTML='<tr><td colspan="11" style="padding:30px;text-align:center">데이터 조회에 실패했습니다. 저장소의 JSON 파일을 확인하세요.</td></tr>';});
 })();
-</script></body></html>
+</script></body><!-- Deployment verified against GitHub Pages configuration -->
+</html>
