@@ -35,4 +35,5 @@ for path in ("data.json", "review.json"):
     data = json.loads((root / path).read_text(encoding="utf-8"))
     assert isinstance(data.get("records"), list), path
 assert (root / "ipo_master.csv").is_file()
-print("PASS: homepage JavaScript and dataset files")
+subprocess.run(["node", str(root.parent / "tests" / "test_selection_ui.js")], check=True)
+print("PASS: homepage JavaScript, selection behaviour and dataset files")
