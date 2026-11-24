@@ -1,1 +1,8 @@
-company_name,listing_date,market,listing_track,industry,lead_underwriter_1,lead_underwriter_2,offering_amount_100m,base_fee_pct,performance_fee_cap_pct,stock_code,dart_rcp_no,source_url,verification_status
+﻿company_name,listing_date,market,listing_track,industry,lead_underwriter_1,lead_underwriter_2,offering_amount_100m,base_fee_pct,performance_fee_cap_pct,stock_code,dart_rcp_no,source_url,verification_status
+덕양에너젠,2026-01-30,코스닥,미확인,연료용 가스 제조 및 배관공급업,NH투자증권,미래에셋증권,750,2,0.7,,20260119000297,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260119000297,manual_verified
+브릴스,2026-10-01,코스닥,미확인,특수 목적용 기계 제조업,IBK투자증권,,234,3.5,0.5,,20260916000234,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260916000234,manual_verified
+글로벌테크놀로지,2026-09-29,코스닥,미확인,반도체 제조업,한국투자증권,,400,4,,,20260915000237,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260915000237,manual_verified
+빅웨이브로보틱스,2026-09-29,코스닥,미확인,소프트웨어 개발 및 공급업,유진투자증권,,288,3,1,,20260914000379,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260914000379,manual_verified
+엘리스,2026-10-20,코스닥,미확인,소프트웨어 개발 및 공급업,미래에셋증권,,2010.91,1.5,1.5,,20261006000447,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006000447,manual_verified
+디티에스,2026-10-23,코스닥,미확인,특수 목적용 기계 제조업,대신증권,,412.35,3.2,1,,20261012000308,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261012000308,manual_verified
+티앤이코리아,2026-10-29,코스닥,미확인,일반 목적용 기계 제조업,신한투자증권,,367.2,4,1,,20261016000158,https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261016000158,manual_verified
