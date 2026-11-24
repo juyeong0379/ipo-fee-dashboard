@@ -2,6 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="공식 KIND·DART 기반 IPO 수수료 벤치마크: 시장·업종·상장트랙·공모규모·연도 필터, 계약상 기본수수료와 성과수수료 상한">
 <title>IPO Fee Benchmark | IPO 수수료 벤치마크</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&display=swap" rel="stylesheet">
 <style>
 :root{font-family:Inter,Arial,"Pretendard","Noto Sans KR",sans-serif;--navy:#172b4a;--blue:#2563eb;--ink:#172337;--muted:#64748b;--border:#e1e8f1;--bg:#f5f8fc;--mint:#0a8f72}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}a{color:#235fba}button,input,select{font:inherit}
@@ -39,11 +40,54 @@ tbody td:first-child{font-weight:650}.tag{display:inline-block;padding:4px 7px;b
 footer{color:#8090a6;font-size:11px;line-height:1.8;padding-top:2px}
 @media(max-width:900px){.filters{grid-template-columns:repeat(2,1fr)}.chartwrap{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .metric:last-child{grid-column:span 2}}
 @media(max-width:600px){main{padding:23px 13px 50px}header .inner{padding:13px}.hero{display:block}.headactions{justify-content:start;margin-top:15px}.filters{grid-template-columns:1fr}.searchwide{grid-column:auto}.stats{grid-template-columns:1fr}.stats .metric:last-child{grid-column:auto}section{padding:18px}.brand .pill{display:none}h1{font-size:26px}}
+
+/* Matching the user's existing IB Daily Briefing design system:
+   pale mint background, Jua/Gowun Dodum typography and green category pills. */
+:root{--navy:#163d33;--blue:#0b815d;--ink:#264137;--muted:#7a8d82;--border:#dbeadf;--bg:#f4f9f5;--mint:#e5f3e8;--green:#0b815d;--soft:#eff8f1;--shadow:0 12px 28px rgba(21,78,53,.06);font-family:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+body{font-family:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.6;background:radial-gradient(circle at 0 0,#e8f6eb 0,transparent 30%),radial-gradient(circle at 100% 4%,#fff4ef 0,transparent 23%),var(--bg)}
+header{background:transparent;border:0}
+header .inner{max-width:1260px;padding:28px 32px 4px}
+.brand{color:var(--green)!important;font:16px 'Jua',sans-serif!important}
+.logo{background:var(--green);border-radius:10px;padding:6px 9px;letter-spacing:0}
+.pill{background:#fff;border:1px solid #d7e9dd;color:#618373;border-radius:999px}
+main{max-width:1260px;padding:14px 32px 64px}
+.hero{margin:0 0 15px;align-items:end}
+.hero h1{font:42px/1.2 'Jua',sans-serif;letter-spacing:-.5px;color:#163d33;margin:0 0 7px}
+.hero .sub{font-size:14px;color:#759080}
+h2{font:23px/1.3 'Jua',sans-serif;color:var(--navy)}
+section,.metric{border-radius:20px;border-color:var(--border);box-shadow:var(--shadow)}
+section{padding:24px}.sectionhint{font-size:13px;color:#83988c}
+.btn{border-color:var(--border);border-radius:12px;color:#315748}
+.btn.primary{background:var(--green);border-color:var(--green);box-shadow:0 5px 15px #0b815d16}
+.btn:hover{border-color:#9bcaae}
+.stats .metric{background:#fff}.metric span{color:#708d7d;font-size:13px}
+.metric strong{font-family:'Jua',sans-serif;color:var(--deep);font-size:36px}
+input,select{border-color:#d8e9dd;border-radius:12px;background:#fbfdfb;color:#315748;font-size:14px}
+label{color:#456c59}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #8dd1ad;outline-offset:2px}
+.statusline{background:var(--soft);color:#386b50;border:1px solid #e2efe6;border-radius:14px;padding:14px}
+.mutebox{background:#fbfefb;border:1px dashed #cce2d3;border-radius:17px;color:#81988a;padding:36px 20px}
+thead{background:#f3faf5}th{color:#45745c}tbody tr:hover{background:#f7fbf8}
+.tablewrap{border-color:var(--border);border-radius:15px}
+.bar{background:linear-gradient(90deg,#0b815d,#3ba77c)}
+.bar-bg{background:#e5f3e8}.tag{background:#e6f4ec;color:#0b815d;border-radius:999px}
+.tag.pending{background:#fff9eb;color:#a27a2a}
+.note,footer{color:#789081}footer a,td a{color:#0b815d}
+.metric small{color:#839589}.tablefoot{color:#839589}.pager button{border-radius:10px;border-color:var(--border);color:var(--green)}
+/* A compact category strip echoing the Daily Briefing navigation. */
+.quick-market{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:14px 16px;margin-bottom:18px}
+.quick-market-label{font:12px 'Jua',sans-serif;color:var(--green);margin:0 9px 0 3px;letter-spacing:.4px}
+.market-tab{background:#f7fbf8;border:1px solid var(--border);color:#547064;padding:10px 17px;border-radius:999px;cursor:pointer;font:14px 'Gowun Dodum',sans-serif}
+.market-tab.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:700;box-shadow:0 6px 16px rgba(8,125,87,.16)}
+.market-tab:hover{border-color:#7dbb9a}
+@media(max-width:700px){header .inner{padding:22px 16px 6px}main{padding:12px 16px 50px}.hero h1{font-size:36px}.hero{align-items:flex-start}.quick-market{padding:12px}.market-tab{padding:8px 12px}section{padding:18px}}
+
 </style></head><body>
-<header><div class="inner"><div class="brand"><span class="logo">IPO</span><span>Fee Benchmark</span><span class="pill">KIND × OpenDART</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
+<header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
-<div class="hero"><div><h1>IPO 인수수수료 벤치마크</h1><p class="sub">상장제안서 수수료 산정을 위한 유사 IPO 계약조건 비교 대시보드</p></div>
+<div class="hero"><div><h1>IPO Fee Benchmark</h1><p class="sub">상장제안서 수수료 산정을 위한 유사 IPO 계약조건 비교 대시보드</p></div>
 <div class="headactions"><a class="btn" href="ipo_master.csv" target="_blank" rel="noopener">검증 DB (CSV)</a><button class="btn" id="download">필터 결과 CSV</button><button class="btn primary" id="reset">조건 초기화</button></div></div>
+<nav class="quick-market" aria-label="상장시장 빠른 선택"><span class="quick-market-label">MARKET VIEW</span><button type="button" class="market-tab active" data-market="">전체 IPO</button><button type="button" class="market-tab" data-market="코스피">코스피</button><button type="button" class="market-tab" data-market="코스닥">코스닥</button></nav>
 <section><div class="topline"><div><h2>① 비교 조건 설정</h2><div class="sectionhint">조건을 변경하면 수수료 평균과 IPO 목록이 함께 갱신됩니다.</div></div><span class="pill">계약상 수수료율 기준</span></div>
 <div class="filters">
 <div class="field"><label for="market">상장시장</label><select id="market"><option value="">전체 시장</option><option>코스닥</option><option>코스피</option></select></div>
@@ -98,7 +142,7 @@ if(min!==null&&(amt===null||amt<min))return false;
 if(max!==null&&(amt===null||amt>max))return false;
 if(search&&(r.company_name+" "+r.lead_underwriter_1+" "+r.lead_underwriter_2).toLowerCase().indexOf(search)<0)return false;
 return true;
-});page=1;render()}
+});page=1;document.querySelectorAll(".market-tab").forEach(function(btn){btn.classList.toggle("active",btn.getAttribute("data-market")===el("market").value)});render()}
 function render(){var verified=filtered.filter(isApproved),review=filtered.length-verified.length,base=avg(verified,"base_fee_pct"),perf=avg(verified,"performance_fee_cap_pct");
 el("baseMean").textContent=base===null?"—":base.toFixed(2)+"%";el("perfMean").textContent=perf===null?"—":perf.toFixed(2)+"%";el("counts").textContent=verified.length+" / "+review;el("numRecords").textContent=filtered.length+"건";
 var groups={};verified.forEach(function(r){var k=r.listing_track||"미분류";(groups[k]||(groups[k]=[])).push(r)});
@@ -115,6 +159,7 @@ el("statusmessage").textContent="검증 완료 "+approvedCount()+"건 · 수집 
 }
 function approvedCount(){return approved.length}
 function downloadCsv(){var fields=[["company_name","회사명"],["listing_date","상장일"],["market","상장시장"],["listing_track","상장트랙"],["industry","업종"],["lead_underwriter_1","대표주관사 1"],["lead_underwriter_2","대표주관사 2"],["offering_amount_100m","공모금액(억원)"],["base_fee_pct","기본수수료(%)"],["performance_fee_cap_pct","성과수수료 상한(%)"],["verification_status","검증상태"],["source_url","DART"]];var quote=function(x){return '"'+String(x==null?"":x).replace(/"/g,'""')+'"'};var csv="\uFEFF"+fields.map(function(f){return quote(f[1])}).join(",")+"\r\n"+filtered.map(function(r){return fields.map(function(f){return quote(r[f[0]])}).join(",")}).join("\r\n");var link=document.createElement("a");link.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));link.download="ipo_fee_filtered.csv";document.body.appendChild(link);link.click();link.remove();setTimeout(function(){URL.revokeObjectURL(link.href)},500)}
+document.querySelectorAll(".market-tab").forEach(function(btn){btn.addEventListener("click",function(){el("market").value=btn.getAttribute("data-market");filter()})});
 controls.forEach(function(id){el(id).addEventListener(["search","amountMin","amountMax"].includes(id)?"input":"change",filter)});
 el("prev").addEventListener("click",function(){if(page>1){page--;render()}});
 el("next").addEventListener("click",function(){if(page*perPage<filtered.length){page++;render()}});
