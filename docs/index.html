@@ -211,29 +211,50 @@ footer a{color:#117a51}
 .date-range span{flex:0 0 auto}
 @media(max-width:700px){.hero h1{font-size:clamp(43px,12vw,60px)}.hero .sub{font-size:13px}.date-range input[type="date"]{font-size:12px;padding:10px 6px}}
 
-/* Light-lime accent update; preserve all existing typography and layout. */
-:root{--lime:#B6E36A;--lime-strong:#88B73D;--lime-dark:#446625;--lime-soft:#F7FBEF;--lime-border:#D9EDB5}
-.hero h1 em{color:var(--lime-strong)}
-.hero .sub{color:#667C55}
-.brand .logo{background:var(--lime);color:#27391B}
-.brand .pill{color:var(--lime-dark);border-left-color:var(--lime-border)}
-.hero::after{border-bottom-color:var(--lime);border-top-color:#283B28}
-.quick-market{border-bottom-color:var(--lime-border)}
-.quick-market-label{color:var(--lime-dark)}
-.market-tab.active{border-bottom-color:var(--lime-strong);color:#263A21}
-.market-tab:hover{border-bottom-color:var(--lime)}
-.pill{color:var(--lime-dark);background:var(--lime-soft);border-color:var(--lime-border)}
-.btn.primary{background:var(--lime);border-color:var(--lime);color:#26391B}
-.btn.primary:hover{background:#A4D453;border-color:#A4D453;color:#26391B}
-.metric{border-top-color:var(--lime)}
-.metric:nth-child(2){background:var(--lime-soft)}
-.metric strong{color:#293926}
-.result-heading h2{color:#2A3625}
-td a,footer a{color:#557B2A}
-tbody tr:hover{background:#FCFEF7}
-thead{background:#F7FAF0}
-th{border-bottom-color:var(--lime)}
-input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline-color:var(--lime-strong)}
+
+/* Calm editorial refresh: white, charcoal and *small* muted sage details. */
+:root{
+  --accent:#7D9B7C;
+  --accent-soft:#F3F7F2;
+  --accent-rule:#DCE7DA;
+  --ink:#222522;
+  --navy:#222522;
+  --bg:#FFFFFF;
+  --border:#E8EBE7;
+  --shadow:0 2px 18px rgba(30,45,35,.025);
+}
+html,body{background:#fff;color:#262B28}
+header{background:#fff;border-bottom:1px solid #EBEEEA}
+.brand{color:#262B28!important}
+.brand .logo{background:#263A31;color:#fff}
+.brand .pill{color:#78867B;border-left-color:#DDE5DF}
+.hero{background:#fff}
+.hero h1,.hero h1 em{color:#222522!important}
+.hero .sub{color:#68766C;font-weight:400}
+.hero::after{border-top:1px solid #252B26;border-bottom:0;height:1px}
+.quick-market{border-bottom:1px solid #DFE6DF}
+.quick-market-label{color:#6B7D6C}
+.market-tab{color:#727A73}
+.market-tab.active{color:#242B25;border-bottom:2px solid #829B80}
+.market-tab:hover{color:#26382A;border-bottom:2px solid #D1DECF}
+section,.metric{background:#fff;border-color:#EAEEEA;box-shadow:0 3px 19px rgba(25,39,29,.025)}
+.pill{background:#F8FAF7;color:#688067;border-color:#E3EBE0}
+.btn{border-color:#D9E0D8;color:#343F35}
+.btn.primary{background:#263F32;border:1px solid #263F32;color:#fff;box-shadow:none}
+.btn.primary:hover{background:#355846;border-color:#355846;color:#fff}
+.metric{border-top:2px solid #A5BDA1}
+.metric:nth-child(2){background:#FCFDFC}
+.metric strong{color:#272C27}
+.result-heading h2{color:#292E29}
+.result-heading .sectionhint{color:#8B948C}
+table thead{background:#F9FAF8}
+th{color:#4A564C;border-bottom:1px solid #DCE7DA}
+tbody tr:hover{background:#FCFEFC}
+td a,footer a{color:#486E4C}
+input,select{border-color:#E0E6DE;background:#fff}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline-color:#A4BE9E}
+.range{color:#737F74}
+@media(max-width:600px){.metric{min-height:146px}}
 
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
