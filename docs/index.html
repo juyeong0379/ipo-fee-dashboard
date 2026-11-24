@@ -280,19 +280,55 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 @media(max-width:950px){.logic-strip{grid-template-columns:1fr;gap:13px}.logic-steps li:first-child{border-left:0;padding-left:0}}
 @media(max-width:650px){.logic-strip{padding:12px 0 16px;margin-bottom:20px}.logic-steps{grid-template-columns:1fr;gap:12px}.logic-steps li,.logic-steps li:first-child{border:0;padding:0;gap:9px}.logic-steps strong{display:inline;margin:0 8px 0 0}.section-heading{gap:9px}.section-icon{width:29px;height:29px;flex-basis:29px}.calculation-notes li{font-size:11.2px}}
 
+
+/* Hands-on IPO comparable selection: compact, editorial, no oversized cards. */
+.selection-tools{margin-top:24px;padding:19px 0 0;border-top:1px solid #E6ECE6}
+.selection-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.selection-head strong{color:#27372D;font-size:15px;font-weight:750}
+.selection-head span{font-size:11px;color:#6F8172;font-variant-numeric:tabular-nums}
+.selection-help{font-size:12px;color:#6D786F;line-height:1.75;margin:7px 0 15px;word-break:keep-all}
+.selection-help strong{color:#42664B}
+.selection-actions{display:flex;gap:14px;justify-content:space-between;align-items:end}
+.selection-search-field{flex:1;min-width:190px;max-width:480px}
+.selection-search-field label{display:block;font-size:12px;color:#405448;margin-bottom:7px}
+.selection-search-field label span{font-weight:400;color:#89958B;font-size:11px}
+.selection-search-field input{min-height:43px;border-color:#DAE4D9;font-size:13px}
+.selection-buttons{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.selection-buttons .btn{font-weight:500;font-size:11px;padding:12px 10px;background:#fff}
+.selection-buttons .btn:disabled,.company-add:disabled{cursor:default;opacity:.5}
+.company-search-results{margin-top:12px}
+.company-search-results:empty{display:none}
+.company-results-hint{font-size:11px;color:#8B968C;padding:7px 0;line-height:1.6}
+.company-search-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 11px;border-bottom:1px solid #EDF1ED;background:#FBFCFB}
+.company-search-item:first-child{border-top:1px solid #EDF1ED}
+.company-search-item .company-name{font-size:12.5px;font-weight:650;color:#2E3C31;word-break:keep-all}
+.company-search-item .company-date{font-size:11px;color:#8B968D;margin-left:9px}
+.company-add{min-width:70px;padding:7px 12px;white-space:nowrap;border-radius:3px;border:1px solid #CBDCCB;background:#F5F9F5;color:#3F6847;font-size:11.5px;cursor:pointer}
+.company-add:not(:disabled):hover{background:#E9F2EA}
+.selection-edits{margin-top:9px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.selection-edits:empty{display:none}
+.selection-edits-label{font-size:11px;color:#66796A;font-weight:700;margin-right:2px}
+.selection-chip{border:1px solid #D8E4D8;background:#F8FBF8;color:#4E6852;border-radius:3px;font-size:11px;padding:5px 8px;cursor:pointer}
+.selection-chip:hover{background:#E9F3EA}
+.selection-tail{font-size:11px;color:#8C988D}
+.table-exclude{border:1px solid #DDE6DD;border-radius:3px;padding:6px 9px;color:#63776A;background:#fff;font-size:11px;white-space:nowrap;cursor:pointer}
+.table-exclude:hover{background:#F1F7F1;color:#345D3C;border-color:#B8CDBA}
+@media(max-width:900px){.selection-actions{flex-direction:column;align-items:stretch}.selection-search-field{max-width:100%}.selection-buttons{justify-content:flex-start}}
+@media(max-width:600px){.selection-tools{margin-top:20px}.selection-head{align-items:flex-start;gap:4px}.selection-search-field label span{display:block}.selection-buttons .btn{flex:1;min-width:135px}.company-search-item .company-date{display:block;margin:2px 0 0}}
+
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
 <div class="hero"><div class="hero-copy"><h1>IPO Fee <em>Data</em></h1><p class="sub">상장제안서 작성 시 수수료 산정</p></div></div>
 <nav class="quick-market" aria-label="상장시장 빠른 선택"><span class="quick-market-label">MARKET VIEW</span><button type="button" class="market-tab active" data-market="">전체 IPO</button><button type="button" class="market-tab" data-market="코스피">코스피</button><button type="button" class="market-tab" data-market="코스닥">코스닥</button></nav>
 <div class="logic-strip" aria-label="페이지 이용 안내">
-  <div class="logic-intro"><span class="logic-eyebrow">GUIDE</span><strong class="logic-label">이용 안내</strong><p>원하는 IPO만 골라서 수수료 평균을 비교하고, 평균을 계산한 기업도 바로 확인할 수 있습니다.</p></div>
+  <div class="logic-intro"><span class="logic-eyebrow">GUIDE</span><strong class="logic-label">이용 안내</strong><p>조건으로 유사기업을 찾은 뒤 추가·제외하여 최종 비교기업의 수수료를 산정합니다.</p></div>
   <ol class="logic-steps">
-    <li><span class="logic-num">01</span><span><strong>분석 대상 선택</strong>시장·상장일·업종·공모금액을 정해 비교할 IPO를 골라요.</span></li>
-    <li><span class="logic-num">02</span><span><strong>평균 수수료 확인</strong>공시로 확인된 기본수수료율과 성과수수료 상한을 각각 평균 내요.</span></li>
+    <li><span class="logic-num">01</span><span><strong>분석 대상 선택</strong>시장·상장일·업종·공모금액으로 후보를 추린 뒤 기업을 추가하거나 제외해요.</span></li>
+    <li><span class="logic-num">02</span><span><strong>평균 수수료 확인</strong>직접 조정한 최종 기업을 대상으로 확인된 수수료율을 각각 평균 내요.</span></li>
     <li><span class="logic-num">03</span><span><strong>근거 기업 확인</strong>계산에 포함된 IPO와 DART 원문을 보고 CSV로 저장할 수 있어요.</span></li>
   </ol>
-</div><section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="#fff"/><circle cx="15" cy="17" r="2" fill="#fff"/></svg></span><span>조건 조정</span></h2><div class="sectionhint">조건을 변경하면 수수료 평균과 IPO 목록이 함께 갱신됩니다.</div></div><div class="headactions"><span class="pill">계약상 수수료율 기준</span><button class="btn" id="reset">조건 초기화</button></div></div>
+</div><section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="#fff"/><circle cx="15" cy="17" r="2" fill="#fff"/></svg></span><span>조건 조정</span></h2><div class="sectionhint">조건을 선택해 IPO를 추린 뒤, 원하는 기업을 직접 추가·제외할 수 있습니다.</div></div><div class="headactions"><span class="pill">계약상 수수료율 기준</span><button class="btn" id="reset">조건 초기화</button></div></div>
 <div class="filters">
 <div class="field"><label for="market">상장시장</label><select id="market"><option value="">전체 시장</option><option>코스닥</option><option>코스피</option></select></div>
 <div class="field"><label for="track">상장트랙</label><select id="track"><option value="">전체 트랙</option></select></div>
@@ -301,13 +337,30 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 <div class="field"><label for="dateFrom">상장일 범위</label><div class="range date-range"><input id="dateFrom" type="date" min="2020-01-01" aria-label="상장일 시작 날짜"><span>~</span><input id="dateTo" type="date" min="2020-01-01" aria-label="상장일 종료 날짜"></div></div>
 <div class="field"><label for="amountMin">공모금액 범위 (억원)</label><div class="range"><input id="amountMin" type="number" min="0" step="10" placeholder="최소"><span>~</span><input id="amountMax" type="number" min="0" step="10" placeholder="최대"></div></div>
 <div class="field searchwide"><label for="search">기업명·주관사 검색</label><input id="search" placeholder="회사명 또는 대표주관사를 입력하세요"></div>
-</div></section>
-<div class="result-heading"><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2m4 0h2m-8 4h2m4 0h2"/></svg></span><span>평균 수수료 산정</span></h2><p class="sectionhint">선택 조건에 해당하는 IPO의 기본수수료율과 성과수수료 상한을 각각 계산합니다.</p></div>
+</div>
+<div class="selection-tools" aria-label="IPO 비교기업 직접 조정">
+  <div class="selection-head"><strong>비교기업 직접 조정</strong><span id="selectionSummary">조건 후보 0건 · 최종 비교기업 0건</span></div>
+  <p class="selection-help">조건에 맞는 기업은 자동으로 포함됩니다. 아래에서 특정 IPO를 <strong>추가</strong>하거나, 최종 목록에서 <strong>제외</strong>해 비교기업을 직접 구성해 보세요. 추가·제외한 결과가 평균과 CSV에 그대로 반영됩니다.</p>
+  <div class="selection-actions">
+    <div class="selection-search-field">
+      <label for="companyPicker">기업 추가 검색 <span>(조건과 관계없이 전체 검증 DB에서 검색)</span></label>
+      <input id="companyPicker" type="search" placeholder="예: HD현대 · 기업명으로 검색" autocomplete="off">
+    </div>
+    <div class="selection-buttons">
+      <button type="button" class="btn" id="excludeCandidates">현재 조건 기업 모두 제외</button>
+      <button type="button" class="btn" id="clearOverrides">직접 조정 초기화</button>
+    </div>
+  </div>
+  <div id="companySearchResults" class="company-search-results" aria-live="polite"></div>
+  <div id="selectionEdits" class="selection-edits" aria-live="polite"></div>
+</div>
+</section>
+<div class="result-heading"><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2m4 0h2m-8 4h2m4 0h2"/></svg></span><span>평균 수수료 산정</span></h2><p class="sectionhint">조건으로 추리고 직접 조정한 최종 비교기업을 기준으로 기본·성과수수료율을 각각 계산합니다.</p></div>
 <div class="stats"><div class="metric"><span>평균 기본수수료율</span><strong id="baseMean" class="empty">—</strong><small id="baseSample">산출 가능한 IPO 0건</small></div>
 <div class="metric"><span>평균 성과수수료 상한</span><strong id="perfMean" class="empty">—</strong><small id="perfSample">산출 가능한 IPO 0건 · 실제 지급률과 다름</small></div>
 </div>
-<section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></svg></span><span>산출 대상 IPO 리스트</span></h2><p class="sectionhint">위 평균 계산에 사용된 IPO 목록입니다. 조건을 바꾸면 목록과 CSV 파일도 함께 변경됩니다.</p></div><div class="headactions"><span id="numRecords" class="pill">0건</span><button class="btn primary" id="download">IPO 목록 다운로드 (CSV)</button></div></div>
-<div class="tablewrap"><table><thead><tr><th>회사명</th><th>상장일</th><th>상장시장</th><th>상장트랙</th><th>주요업종</th><th>대표주관사</th><th>공모금액(억원)</th><th>기본수수료</th><th>성과상한</th><th>DART</th></tr></thead><tbody id="tbody"><tr><td colspan="10" style="text-align:center;color:#71839e;padding:35px">데이터를 불러오는 중입니다.</td></tr></tbody></table></div>
+<section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></svg></span><span>산출 대상 IPO 리스트</span></h2><p class="sectionhint">최종 비교기업 목록입니다. 기업을 제외하거나 추가하면 평균과 CSV 다운로드 결과도 함께 바뀝니다.</p></div><div class="headactions"><span id="numRecords" class="pill">0건</span><button class="btn primary" id="download">IPO 목록 다운로드 (CSV)</button></div></div>
+<div class="tablewrap"><table><thead><tr><th>회사명</th><th>상장일</th><th>상장시장</th><th>상장트랙</th><th>주요업종</th><th>대표주관사</th><th>공모금액(억원)</th><th>기본수수료</th><th>성과상한</th><th>DART</th><th>비교 조정</th></tr></thead><tbody id="tbody"><tr><td colspan="11" style="text-align:center;color:#71839e;padding:35px">데이터를 불러오는 중입니다.</td></tr></tbody></table></div>
 <div class="tablefoot"><span id="pageinfo">—</span><div class="pager"><button id="prev" disabled>이전</button><button id="next" disabled>다음</button></div></div>
 <div class="calculation-notes" aria-label="수수료 산정 기준 및 유의사항">
   <div class="calculation-notes-title">산정 기준 및 유의사항</div>
@@ -322,7 +375,8 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 </main><script>
 (function(){
 "use strict";
-var approved=[],all=[],filtered=[],page=1,perPage=15,updated=null;
+var approved=[],all=[],candidates=[],filtered=[],page=1,perPage=15,updated=null;
+var manualAdded=new Set(),manualExcluded=new Set();
 var el=function(x){return document.getElementById(x)};
 var controls=["market","track","industry","dateFrom","dateTo","amountMin","amountMax","search"];
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
@@ -333,8 +387,9 @@ function validRate(x){var n=number(x);return n!==null&&n>=0&&n<=20?n:null}
 function avg(items,key){var vals=items.map(function(r){return validRate(r[key])}).filter(function(x){return x!==null});return vals.length?vals.reduce(function(a,b){return a+b},0)/vals.length:null}
 function options(id,values){var target=el(id),current=target.value;target.innerHTML='<option value="">전체 '+(id==="industry"?"업종":"트랙")+"</option>"+values.map(function(v){return '<option value="'+safe(v)+'">'+safe(v)+'</option>'}).join("");target.value=values.indexOf(current)>=0?current:""}
 function initFilters(){options("track",Array.from(new Set(all.map(function(r){return r.listing_track}).filter(Boolean))).sort());options("industry",Array.from(new Set(all.map(function(r){return r.industry}).filter(Boolean))).sort());}
-function filter(){var dateFrom=el("dateFrom").value,dateTo=el("dateTo").value,min=number(el("amountMin").value),max=number(el("amountMax").value),search=el("search").value.trim().toLowerCase();
-filtered=all.filter(function(r){
+function companyKey(r){return String(r.stock_code||r.company_name||"")+"|"+String(r.listing_date||"")}
+function matchesCriteria(r){
+var dateFrom=el("dateFrom").value,dateTo=el("dateTo").value,min=number(el("amountMin").value),max=number(el("amountMax").value),search=el("search").value.trim().toLowerCase();
 var listed=String(r.listing_date||"").trim().replace(/\./g,"-").replace(/\//g,"-"),amt=number(r.offering_amount_100m);
 if(el("market").value&&r.market!==el("market").value)return false;
 if(el("track").value&&r.listing_track!==el("track").value)return false;
@@ -343,9 +398,38 @@ if(dateFrom&&(!listed||listed<dateFrom))return false;
 if(dateTo&&(!listed||listed>dateTo))return false;
 if(min!==null&&(amt===null||amt<min))return false;
 if(max!==null&&(amt===null||amt>max))return false;
-if(search&&(r.company_name+" "+r.lead_underwriter_1+" "+r.lead_underwriter_2).toLowerCase().indexOf(search)<0)return false;
+if(search&&(String(r.company_name||"")+" "+String(r.lead_underwriter_1||"")+" "+String(r.lead_underwriter_2||"")).toLowerCase().indexOf(search)<0)return false;
 return true;
-});page=1;document.querySelectorAll(".market-tab").forEach(function(btn){btn.classList.toggle("active",btn.getAttribute("data-market")===el("market").value)});render()}
+}
+function renderCompanyPicker(){
+var q=el("companyPicker").value.trim().toLowerCase(),target=el("companySearchResults");
+if(!q){target.innerHTML="";return}
+var matches=all.filter(function(r){return String(r.company_name||"").toLowerCase().includes(q)||String(r.stock_code||"").includes(q)});
+if(!matches.length){target.innerHTML='<div class="company-results-hint">일치하는 기업이 없습니다. 아직 검증 DB에 등록되지 않은 IPO는 추가할 수 없습니다.</div>';return}
+target.innerHTML=matches.slice(0,15).map(function(r){
+var k=companyKey(r),active=filtered.some(function(x){return companyKey(x)===k}),label=active?"선택됨":manualExcluded.has(k)?"다시 포함":"추가";
+return '<div class="company-search-item"><div><span class="company-name">'+safe(r.company_name)+'</span><span class="company-date">'+safe(r.listing_date)+" · "+safe(r.market)+'</span></div><button type="button" class="company-add" data-add="'+safe(k)+'"'+(active?" disabled":"")+'>'+label+'</button></div>';
+}).join("")+(matches.length>15?'<div class="company-results-hint">검색 결과가 많습니다. 기업명을 더 구체적으로 입력해 주세요. (상위 15건 표시)</div>':"");
+}
+function renderSelectionEdits(){
+el("selectionSummary").textContent="조건 후보 "+candidates.length+"건 · 최종 비교기업 "+filtered.length+"건 · 직접 추가 "+manualAdded.size+"건 · 제외 "+manualExcluded.size+"건";
+el("excludeCandidates").disabled=!candidates.some(function(r){return filtered.some(function(x){return companyKey(x)===companyKey(r)})});
+el("clearOverrides").disabled=!manualAdded.size&&!manualExcluded.size;
+var removed=all.filter(function(r){return manualExcluded.has(companyKey(r))});
+var forced=all.filter(function(r){return manualAdded.has(companyKey(r))&&!manualExcluded.has(companyKey(r))});
+var out=[];
+if(forced.length){out.push('<span class="selection-edits-label">직접 추가</span>');forced.slice(0,12).forEach(function(r){out.push('<button type="button" class="selection-chip" data-unadd="'+safe(companyKey(r))+'" title="직접 추가 취소">'+safe(r.company_name)+' ×</button>')});if(forced.length>12)out.push('<span class="selection-tail">외 '+(forced.length-12)+'건</span>')}
+if(removed.length){out.push('<span class="selection-edits-label">제외한 기업 (눌러서 복원)</span>');removed.slice(0,12).forEach(function(r){out.push('<button type="button" class="selection-chip" data-restore="'+safe(companyKey(r))+'">'+safe(r.company_name)+' ↶</button>')});if(removed.length>12)out.push('<span class="selection-tail">외 '+(removed.length-12)+'건 · 검색창에서도 복원 가능</span>')}
+el("selectionEdits").innerHTML=out.join("");
+}
+function filter(){
+candidates=all.filter(matchesCriteria);
+var candidateKeys=new Set(candidates.map(companyKey));
+filtered=all.filter(function(r){var k=companyKey(r);return (candidateKeys.has(k)||manualAdded.has(k))&&!manualExcluded.has(k)});
+page=1;
+document.querySelectorAll(".market-tab").forEach(function(btn){btn.classList.toggle("active",btn.getAttribute("data-market")===el("market").value)});
+render();renderCompanyPicker();renderSelectionEdits();
+}
 function render(){var base=avg(filtered,"base_fee_pct"),perf=avg(filtered,"performance_fee_cap_pct");
 var baseCount=filtered.filter(function(r){return validRate(r.base_fee_pct)!==null}).length;
 var perfCount=filtered.filter(function(r){return validRate(r.performance_fee_cap_pct)!==null}).length;
@@ -355,8 +439,8 @@ el("perfSample").textContent="산출 기업 "+perfCount+"건 · 실제 지급률
 el("numRecords").textContent=filtered.length+"건";el("download").disabled=!filtered.length;
 var start=(page-1)*perPage,part=filtered.slice(start,start+perPage),td=part.map(function(r){
 var link=/^https:\/\/dart\.fss\.or\.kr\//.test(r.source_url||"")?'<a href="'+safe(r.source_url)+'" target="_blank" rel="noopener">원문 보기</a>':"—";
-return '<tr><td>'+safe(r.company_name||"—")+'</td><td class="mono">'+safe(r.listing_date||"—")+'</td><td>'+safe(r.market||"—")+'</td><td>'+safe(r.listing_track||"—")+'</td><td>'+safe(r.industry||"—")+'</td><td>'+safe([r.lead_underwriter_1,r.lead_underwriter_2].filter(Boolean).join(", ")||"—")+'</td><td class="mono">'+format(number(r.offering_amount_100m))+'</td><td class="mono">'+(validRate(r.base_fee_pct)===null?"—":validRate(r.base_fee_pct).toFixed(2)+"%")+'</td><td class="mono">'+(validRate(r.performance_fee_cap_pct)===null?"—":validRate(r.performance_fee_cap_pct).toFixed(2)+"%")+'</td><td>'+link+'</td></tr>'}).join("");
-el("tbody").innerHTML=td||'<tr><td colspan="10" style="padding:35px;text-align:center;color:#7b8da4">선택 조건에 맞는 IPO가 없습니다. 필터를 조정해 주세요.</td></tr>';
+return '<tr><td>'+safe(r.company_name||"—")+'</td><td class="mono">'+safe(r.listing_date||"—")+'</td><td>'+safe(r.market||"—")+'</td><td>'+safe(r.listing_track||"—")+'</td><td>'+safe(r.industry||"—")+'</td><td>'+safe([r.lead_underwriter_1,r.lead_underwriter_2].filter(Boolean).join(", ")||"—")+'</td><td class="mono">'+format(number(r.offering_amount_100m))+'</td><td class="mono">'+(validRate(r.base_fee_pct)===null?"—":validRate(r.base_fee_pct).toFixed(2)+"%")+'</td><td class="mono">'+(validRate(r.performance_fee_cap_pct)===null?"—":validRate(r.performance_fee_cap_pct).toFixed(2)+"%")+'</td><td>'+link+'</td><td><button type="button" class="table-exclude" data-exclude="'+safe(companyKey(r))+'">제외</button></td></tr>'}).join("");
+el("tbody").innerHTML=td||'<tr><td colspan="11" style="padding:35px;text-align:center;color:#7b8da4">선택 조건에 맞는 IPO가 없습니다. 필터를 조정해 주세요.</td></tr>';
 el("pageinfo").textContent=filtered.length?(start+1)+"–"+Math.min(start+perPage,filtered.length)+" / "+filtered.length+"건":"0건";
 el("prev").disabled=page===1;el("next").disabled=page*perPage>=filtered.length;
 }
@@ -366,7 +450,34 @@ controls.forEach(function(id){el(id).addEventListener(["search","amountMin","amo
 el("prev").addEventListener("click",function(){if(page>1){page--;render()}});
 el("next").addEventListener("click",function(){if(page*perPage<filtered.length){page++;render()}});
 el("download").addEventListener("click",downloadCsv);
-el("reset").addEventListener("click",function(){controls.forEach(function(id){el(id).value=""});filter()});
+
+el("companyPicker").addEventListener("input",renderCompanyPicker);
+el("companySearchResults").addEventListener("click",function(event){
+var button=event.target.closest("button[data-add]");if(!button||button.disabled)return;
+var k=button.getAttribute("data-add"),r=all.find(function(x){return companyKey(x)===k});if(!r)return;
+manualExcluded.delete(k);
+if(matchesCriteria(r))manualAdded.delete(k);else manualAdded.add(k);
+filter();
+});
+el("selectionEdits").addEventListener("click",function(event){
+var unadd=event.target.closest("button[data-unadd]"),restore=event.target.closest("button[data-restore]");
+if(unadd){manualAdded.delete(unadd.getAttribute("data-unadd"));filter()}
+else if(restore){manualExcluded.delete(restore.getAttribute("data-restore"));filter()}
+});
+el("tbody").addEventListener("click",function(event){
+var button=event.target.closest("button[data-exclude]");if(!button)return;
+var k=button.getAttribute("data-exclude"),r=all.find(function(x){return companyKey(x)===k});if(!r)return;
+manualAdded.delete(k);
+if(matchesCriteria(r))manualExcluded.add(k);else manualExcluded.delete(k);
+filter();
+});
+el("excludeCandidates").addEventListener("click",function(){
+candidates.forEach(function(r){var k=companyKey(r);manualAdded.delete(k);manualExcluded.add(k)});
+filter();
+});
+el("clearOverrides").addEventListener("click",function(){manualAdded.clear();manualExcluded.clear();filter()});
+
+el("reset").addEventListener("click",function(){controls.forEach(function(id){el(id).value=""});el("companyPicker").value="";manualAdded.clear();manualExcluded.clear();filter()});
 fetch("data.json",{cache:"no-store"}).then(function(response){
 if(!response.ok)throw new Error("data.json HTTP "+response.status);
 return response.json();
@@ -378,7 +489,7 @@ all=approved.filter(function(r){return validRate(r.base_fee_pct)!==null||validRa
 el("sync").textContent="마지막 데이터 갱신 "+(updated||"미확인");initFilters();filter();
 }).catch(function(e){
 el("sync").textContent="DB 읽기 오류";
-el("tbody").innerHTML='<tr><td colspan="10" style="padding:30px;text-align:center">데이터 조회 실패: '+safe(e.message)+'</td></tr>';
+el("tbody").innerHTML='<tr><td colspan="11" style="padding:30px;text-align:center">데이터 조회 실패: '+safe(e.message)+'</td></tr>';
 });
 })();
 </script></body><!-- Deployment verified against GitHub Pages configuration -->
