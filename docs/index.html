@@ -27,7 +27,7 @@ section{background:#fff;border:1px solid var(--border);border-radius:16px;margin
 .field{display:flex;flex-direction:column;gap:7px}label{font-size:12px;font-weight:700;color:#41536c}
 input,select{width:100%;border:1px solid #d5dfed;border-radius:10px;padding:11px 12px;background:#fff;color:#25324a;outline:none;min-width:0}
 .range{display:flex;gap:8px;align-items:center}.range span{font-size:12px;color:var(--muted)}.searchwide{grid-column:span 2}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:16px}
 .metric{background:#fff;border:1px solid var(--border);border-radius:16px;padding:21px 22px}
 .metric span{font-size:12px;color:var(--muted);display:block}.metric strong{font-size:32px;letter-spacing:-1px;display:block;color:var(--navy);margin-top:8px;font-variant-numeric:tabular-nums}
 .metric small{font-size:11px;color:var(--muted);display:block;margin-top:4px}.metric .empty{font-size:26px}
@@ -38,8 +38,8 @@ tbody td:first-child{font-weight:650}.tag{display:inline-block;padding:4px 7px;b
 .tablefoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:14px;font-size:12px;color:var(--muted)}.pager{display:flex;gap:7px}.pager button{padding:7px 11px;cursor:pointer;background:#fff;border:1px solid var(--border);border-radius:8px}.pager button:disabled{opacity:.4;cursor:not-allowed}
 .note{font-size:12px;color:#687992;margin-top:15px;line-height:1.7}.statusline{background:#f1f6ff;padding:12px 14px;border-radius:9px;font-size:12px;color:#35547d}
 footer{color:#8090a6;font-size:11px;line-height:1.8;padding-top:2px}
-@media(max-width:900px){.filters{grid-template-columns:repeat(2,1fr)}.chartwrap{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.stats .metric:last-child{grid-column:span 2}}
-@media(max-width:600px){main{padding:23px 13px 50px}header .inner{padding:13px}.hero{display:block}.headactions{justify-content:start;margin-top:15px}.filters{grid-template-columns:1fr}.searchwide{grid-column:auto}.stats{grid-template-columns:1fr}.stats .metric:last-child{grid-column:auto}section{padding:18px}.brand .pill{display:none}h1{font-size:26px}}
+@media(max-width:900px){.filters{grid-template-columns:repeat(2,1fr)}.chartwrap{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){main{padding:23px 13px 50px}header .inner{padding:13px}.hero{display:block}.headactions{justify-content:start;margin-top:15px}.filters{grid-template-columns:1fr}.searchwide{grid-column:auto}.stats{grid-template-columns:1fr}section{padding:18px}.brand .pill{display:none}h1{font-size:26px}}
 
 /* Matching the user's existing IB Daily Briefing design system:
    pale mint background, Jua/Gowun Dodum typography and green category pills. */
@@ -100,13 +100,12 @@ thead{background:#f3faf5}th{color:#45745c}tbody tr:hover{background:#f7fbf8}
 </div></section>
 <div class="stats"><div class="metric"><span>② 평균 기본수수료율</span><strong id="baseMean" class="empty">—</strong><small>검증 완료 IPO의 기본수수료율 단순평균</small></div>
 <div class="metric"><span>평균 성과수수료 상한</span><strong id="perfMean" class="empty">—</strong><small>계약상 상한이며 실제 지급률과 다름</small></div>
-<div class="metric"><span>검증된 비교기업 / 검토 대기</span><strong id="counts">0 / 0</strong><small>필터 조건에 해당하는 기업</small></div></div>
-<div class="chartwrap"><section><div class="topline"><div><h2>③ 상장트랙별 기본수수료율</h2><div class="sectionhint">선택 조건 내 검증 완료 IPO 기준</div></div></div><div id="chart"><div class="mutebox">검증된 IPO 데이터가 등록되면 여기에 그래프가 표시됩니다.</div></div></section>
+</div>
 <section><div class="topline"><div><h2>데이터 갱신 현황</h2><div class="sectionhint">검증 완료 데이터만 평균에 반영합니다.</div></div></div>
 <div class="statusline" id="statusmessage">원본 DB 및 검토 목록을 불러오는 중입니다.</div>
 <p class="note">KIND에서 신규상장 기업을 확인한 뒤 DART 증권신고서의 최종 정정본에서 인수계약 조항을 추출합니다. 추출이 불명확한 기업은 검토 목록에 남습니다. 단순히 성과수수료 조항이 보이지 않는다고 0%로 처리하지 않습니다.</p>
-</section></div>
-<section><div class="topline"><div><h2>④ 조건별 IPO 목록</h2><p class="sectionhint">비교에 사용되는 기업과 검토 중인 기업을 함께 확인할 수 있습니다. 상단 조건을 변경하면 목록도 갱신됩니다.</p></div><span id="numRecords" class="pill">0건</span></div>
+</section>
+<section><div class="topline"><div><h2>③ 조건별 IPO 목록</h2><p class="sectionhint">비교에 사용되는 기업과 검토 중인 기업을 함께 확인할 수 있습니다. 상단 조건을 변경하면 목록도 갱신됩니다.</p></div><span id="numRecords" class="pill">0건</span></div>
 <div class="tablewrap"><table><thead><tr><th>회사명</th><th>상장일</th><th>상장시장</th><th>상장트랙</th><th>주요업종</th><th>대표주관사</th><th>공모금액(억원)</th><th>기본수수료</th><th>성과상한</th><th>상태</th><th>DART</th></tr></thead><tbody id="tbody"><tr><td colspan="11" style="text-align:center;color:#71839e;padding:35px">데이터를 불러오는 중입니다.</td></tr></tbody></table></div>
 <div class="tablefoot"><span id="pageinfo">—</span><div class="pager"><button id="prev" disabled>이전</button><button id="next" disabled>다음</button></div></div>
 <p class="note">* 수수료는 계약상 기본요율·성과수수료 상한입니다. 공모금액 외 의무인수금액이 수수료 산정 분모에 포함될 수 있으며, 특이계약은 DART 원문을 확인해야 합니다. 검토 중인 기업의 숫자는 참고용 후보로만 표시하며 평균에서 제외합니다.</p>
@@ -143,12 +142,8 @@ if(max!==null&&(amt===null||amt>max))return false;
 if(search&&(r.company_name+" "+r.lead_underwriter_1+" "+r.lead_underwriter_2).toLowerCase().indexOf(search)<0)return false;
 return true;
 });page=1;document.querySelectorAll(".market-tab").forEach(function(btn){btn.classList.toggle("active",btn.getAttribute("data-market")===el("market").value)});render()}
-function render(){var verified=filtered.filter(isApproved),review=filtered.length-verified.length,base=avg(verified,"base_fee_pct"),perf=avg(verified,"performance_fee_cap_pct");
-el("baseMean").textContent=base===null?"—":base.toFixed(2)+"%";el("perfMean").textContent=perf===null?"—":perf.toFixed(2)+"%";el("counts").textContent=verified.length+" / "+review;el("numRecords").textContent=filtered.length+"건";
-var groups={};verified.forEach(function(r){var k=r.listing_track||"미분류";(groups[k]||(groups[k]=[])).push(r)});
-var chart=Object.keys(groups).map(function(k){return {name:k,val:avg(groups[k],"base_fee_pct")}}).filter(function(o){return o.val!==null}).sort(function(a,b){return b.val-a.val});
-if(!chart.length){el("chart").innerHTML='<div class="mutebox">선택 조건에 검증 완료된 IPO가 없습니다.<br>수수료 조항이 검증되면 트랙별 그래프가 자동으로 표시됩니다.</div>'}else{
-var m=Math.max.apply(null,chart.map(function(x){return x.val}));el("chart").innerHTML=chart.map(function(x){return '<div class="chart-row"><span class="chartlabel" title="'+safe(x.name)+'">'+safe(x.name)+'</span><div class="bar-bg"><div class="bar" style="width:'+Math.max(3,x.val/m*100).toFixed(1)+'%"></div></div><strong class="mono">'+x.val.toFixed(2)+'%</strong></div>'}).join("")}
+function render(){var verified=filtered.filter(isApproved),base=avg(verified,"base_fee_pct"),perf=avg(verified,"performance_fee_cap_pct");
+el("baseMean").textContent=base===null?"—":base.toFixed(2)+"%";el("perfMean").textContent=perf===null?"—":perf.toFixed(2)+"%";el("numRecords").textContent=filtered.length+"건";
 var start=(page-1)*perPage,part=filtered.slice(start,start+perPage),td=part.map(function(r){
 var approved=isApproved(r),link=/^https:\/\/dart\.fss\.or\.kr\//.test(r.source_url||"")?'<a href="'+safe(r.source_url)+'" target="_blank" rel="noopener">원문 보기</a>':"—";
 return '<tr><td>'+safe(r.company_name||"—")+'</td><td class="mono">'+safe(r.listing_date||"—")+'</td><td>'+safe(r.market||"—")+'</td><td>'+safe(r.listing_track||"—")+'</td><td>'+safe(r.industry||"—")+'</td><td>'+safe([r.lead_underwriter_1,r.lead_underwriter_2].filter(Boolean).join(", ")||"—")+'</td><td class="mono">'+format(number(r.offering_amount_100m))+'</td><td class="mono">'+(validRate(r.base_fee_pct)===null?"—":validRate(r.base_fee_pct).toFixed(2)+"%")+'</td><td class="mono">'+(validRate(r.performance_fee_cap_pct)===null?"—":validRate(r.performance_fee_cap_pct).toFixed(2)+"%")+'</td><td><span class="tag'+(approved?"":" pending")+'">'+(approved?"검증 완료":"검토 중")+'</span></td><td>'+link+'</td></tr>'}).join("");
