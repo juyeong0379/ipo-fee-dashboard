@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="공식 KIND·DART 기반 IPO 수수료 벤치마크: 시장·업종·상장트랙·공모규모·연도 필터, 계약상 기본수수료와 성과수수료 상한">
-<title>IPO Fee Benchmark | IPO 수수료 벤치마크</title>
+<title>IPO Fee Data | 상장제안서 작성 시 수수료 산정</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{font-family:Inter,Arial,"Pretendard","Noto Sans KR",sans-serif;--navy:#172b4a;--blue:#2563eb;--ink:#172337;--muted:#64748b;--border:#e1e8f1;--bg:#f5f8fc;--mint:#0a8f72}
@@ -87,77 +87,77 @@ thead{background:#f3faf5}th{color:#45745c}tbody tr:hover{background:#f7fbf8}
 
 
 /* Editorial refresh: inspired by the supplied YBTH LAB screenshot.
-   Airy near-monochrome, restrained brass accents, crisp black serif title.
+   White background, forest-green accents, crisp black serif title.
    Intentionally a website / data portal rather than a corporate report. */
 :root{
  --bg:#fbfaf8;--paper:#fff;--navy:#262421;--ink:#272522;
  --muted:#77736e;--border:#e8e3dc;--soft:#f6f4f0;--mint:#f7f4ef;
- --green:#9f7c49;--deep:#272421;--blue:#9f7c49;--shadow:0 6px 28px rgba(53,42,24,.027);
+ --green:#12845a;--deep:#272421;--blue:#12845a;--shadow:0 6px 28px rgba(53,42,24,.027);
  font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
 }
 html{background:#fbfaf8}
 body{background:#fbfaf8;color:var(--ink);font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1.6}
-a{color:#8f6838}
-header{background:#fff;border-bottom:1px solid #eeeae4}
+a{color:#117a51}
+header{background:#fff;border-bottom:1px solid #e8eee9}
 header .inner{max-width:1210px;padding:16px 28px;align-items:center}
 .brand{font:600 12px/1.1 'Noto Sans KR',sans-serif!important;color:#302d29!important;letter-spacing:.1em}
 .brand .logo{display:flex;align-items:center;justify-content:center;width:29px;height:29px;padding:0;background:#262421;color:#fff;font:600 11px 'Noto Sans KR',sans-serif;border-radius:2px;letter-spacing:0}
-.brand .pill{background:transparent;border:0;border-left:1px solid #d8d1c7;padding:2px 0 2px 11px;border-radius:0;color:#a28053;font-size:10px;letter-spacing:.12em}
+.brand .pill{background:transparent;border:0;border-left:1px solid #d8d1c7;padding:2px 0 2px 11px;border-radius:0;color:#17865b;font-size:10px;letter-spacing:.12em}
 #sync{font-size:11px;letter-spacing:.01em;color:#9a9389}
 main{max-width:1210px;padding:0 28px 80px}
 .hero{justify-content:center;text-align:center;align-items:center;flex-direction:column;gap:0;margin:0;padding:48px 0 32px;background:#fff}
-.hero::after{content:'';display:block;width:100%;height:5px;margin-top:34px;border-top:2px solid #37322c;border-bottom:1px solid #b7aa97}
+.hero::after{content:'';display:block;width:100%;height:5px;margin-top:34px;border-top:2px solid #37322c;border-bottom:1px solid #a4d4bb}
 .hero-copy{width:100%;max-width:900px;margin:auto}
-.hero-kicker{margin:0 0 12px;color:#967548;font:700 11px/1.4 'Noto Sans KR',sans-serif;letter-spacing:.25em}
+.hero-kicker{margin:0 0 12px;color:#12845a;font:700 11px/1.4 'Noto Sans KR',sans-serif;letter-spacing:.25em}
 .hero h1{font:500 clamp(46px,6.7vw,83px)/1.05 'Playfair Display',Georgia,'Times New Roman',serif!important;color:#262421!important;letter-spacing:-.065em;margin:0 0 17px}
-.hero h1 em{font-weight:400;font-style:italic;color:#9b7950}
-.hero-subtitle{margin:0 0 10px;color:#9b7950;font:italic 400 17px/1.5 'Playfair Display',Georgia,serif;letter-spacing:.01em}
+.hero h1 em{font-weight:400;font-style:italic;color:#12845a}
+.hero-subtitle{margin:0 0 10px;color:#12845a;font:italic 400 17px/1.5 'Playfair Display',Georgia,serif;letter-spacing:.01em}
 .hero .sub{font:400 13px/1.8 'Noto Sans KR',sans-serif;color:#848079}
-.quick-market{margin:0 0 24px;padding:0 4px;gap:20px;background:transparent;border:0;border-bottom:1px solid #d4c4b0;border-radius:0;box-shadow:none;min-height:59px}
-.quick-market-label{font:700 11px 'Noto Sans KR',sans-serif;color:#9b7950;letter-spacing:.14em;margin:0 7px 0 0}
+.quick-market{margin:0 0 24px;padding:0 4px;gap:20px;background:transparent;border:0;border-bottom:1px solid #c5e1d0;border-radius:0;box-shadow:none;min-height:59px}
+.quick-market-label{font:700 11px 'Noto Sans KR',sans-serif;color:#12845a;letter-spacing:.14em;margin:0 7px 0 0}
 .market-tab{font:600 13px 'Noto Sans KR',sans-serif;background:transparent;border:0;border-bottom:3px solid transparent;border-radius:0;color:#77716b;padding:18px 14px 14px;min-height:56px;box-shadow:none}
-.market-tab:hover{color:#262421;border-color:#d2be9f}
-.market-tab.active{background:transparent;color:#262421;border:0;border-bottom:3px solid #a8814d;border-radius:0;box-shadow:none;font-weight:750}
+.market-tab:hover{color:#262421;border-color:#b8d9c7}
+.market-tab.active{background:transparent;color:#262421;border:0;border-bottom:3px solid #12845a;border-radius:0;box-shadow:none;font-weight:750}
 section,.metric{border-radius:3px;border:1px solid #e6e1da;background:#fff;box-shadow:var(--shadow)}
 section{padding:28px;margin-bottom:20px}
 .topline{margin-bottom:20px;align-items:center}
 h2{font:700 20px/1.45 'Noto Sans KR',sans-serif;color:#282522;letter-spacing:-.05em}
 .sectionhint{font:400 12px/1.65 'Noto Sans KR',sans-serif;color:#999188;margin:5px 0 0}
-.pill{font:500 11px 'Noto Sans KR',sans-serif;background:#faf8f4;border:1px solid #e8e1d6;color:#8e7c65;border-radius:2px;padding:7px 11px}
-.btn{border-radius:2px;border:1px solid #d6cfc6;background:#fff;color:#423c36;font:600 12px 'Noto Sans KR',sans-serif;padding:10px 14px}
+.pill{font:500 11px 'Noto Sans KR',sans-serif;background:#f4faf7;border:1px solid #dcece2;color:#12845a;border-radius:2px;padding:7px 11px}
+.btn{border-radius:2px;border:1px solid #d7e7dc;background:#fff;color:#423c36;font:600 12px 'Noto Sans KR',sans-serif;padding:10px 14px}
 .btn.primary{background:#2f2a24;color:#fff;border-color:#2f2a24;box-shadow:none}
-.btn:hover{border-color:#a18a6c}
+.btn:hover{border-color:#18865d}
 .btn.primary:hover{background:#4b4237}
 .filters{column-gap:17px;row-gap:18px}
 .field label{font:600 12px 'Noto Sans KR',sans-serif;color:#514b44}
 input,select{border:1px solid #e1dbd3;border-radius:3px;background:#fff;font:400 13px 'Noto Sans KR',sans-serif;color:#393631;padding:12px 13px;min-height:46px}
 input::placeholder{color:#ada79e}
-input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #bd9b70;outline-offset:2px}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid #16966b;outline-offset:2px}
 .range{gap:8px}
 .result-heading{margin:28px 0 14px 2px;padding:0 3px}
 .result-heading h2{font:700 22px 'Noto Sans KR',sans-serif;margin:0;color:#292622}
 .result-heading .sectionhint{margin-top:4px}
 .stats{gap:16px;margin-bottom:22px}
-.metric{padding:27px 30px 25px;border-top:3px solid #ac895a;min-height:176px}
+.metric{padding:27px 30px 25px;border-top:3px solid #16855b;min-height:176px}
 .metric span{font:600 13px 'Noto Sans KR',sans-serif;color:#686159}
 .metric strong{display:block;margin-top:17px;font:500 49px/1.1 'Playfair Display',Georgia,serif!important;letter-spacing:-.04em;color:#2b2723}
 .metric strong.empty{font-size:47px}
 .metric small{font:400 11px/1.65 'Noto Sans KR',sans-serif;color:#968f86;margin-top:8px}
-.metric:nth-child(2){background:#f8f6f2}
+.metric:nth-child(2){background:#f3faf6}
 .tablewrap{border:1px solid #e9e5df;border-radius:2px}
 table{font:400 12px 'Noto Sans KR',sans-serif}
-thead{background:#f6f4ef}
-th{border-bottom:2px solid #b09a7c;padding:15px 13px;font-weight:700;color:#50483f}
+thead{background:#f4faf7}
+th{border-bottom:2px solid #91c9ad;padding:15px 13px;font-weight:700;color:#50483f}
 td{padding:14px 13px;color:#4c4842}
 tbody tr{border-bottom:1px solid #ebe7e2}
-tbody tr:hover{background:#fbfaf7}
+tbody tr:hover{background:#f8fcfa}
 tbody td:first-child{color:#282522}
-td a{font-weight:600;color:#906c42}
+td a{font-weight:600;color:#12845a}
 .tablefoot{color:#8f8981}
 .pager button{border-radius:2px;border:1px solid #e4ddd5;color:#514b43;background:#fff}
 .note,footer{color:#878178}
 footer{padding-bottom:14px}
-footer a{color:#8b6a46}
+footer a{color:#117a51}
 .headactions{align-items:center;gap:10px}
 #download{white-space:nowrap}
 .btn:disabled{opacity:.45;cursor:not-allowed}
@@ -189,10 +189,31 @@ footer a{color:#8b6a46}
  .topline .headactions{width:100%;justify-content:space-between}
 }
 
+
+/* Green accent refresh and precise calendar range filter. */
+.hero{padding:43px 0 27px}
+.hero h1 em{color:#12845a}
+.hero .sub{font-size:15px;color:#567265;font-weight:500;letter-spacing:-.02em}
+.hero::after{border-top-color:#243f32;border-bottom-color:#9dccb1;margin-top:30px}
+.brand .logo{background:#137a53}
+.brand .pill{color:#12845a;border-left-color:#b9dfca}
+.quick-market{border-bottom-color:#b8dbca}
+.market-tab.active{border-bottom-color:#12845a;color:#1b3f2d}
+.market-tab:hover{border-bottom-color:#a5d2ba}
+.quick-market-label{color:#12845a}
+.pill{color:#2c7857;background:#f5fbf7;border-color:#d7eade}
+.btn.primary{background:#12845a;border-color:#12845a}
+.btn.primary:hover{background:#0d6f4a}
+.metric{border-top-color:#12845a}
+.metric:nth-child(2){background:#f3faf6}
+.result-heading h2{color:#233b2e}
+.date-range input[type="date"]{flex:1 1 0;min-width:0;width:100%;font-variant-numeric:tabular-nums;padding:11px 9px}
+.date-range span{flex:0 0 auto}
+@media(max-width:700px){.hero h1{font-size:clamp(43px,12vw,60px)}.hero .sub{font-size:13px}.date-range input[type="date"]{font-size:12px;padding:10px 6px}}
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
-<div class="hero"><div class="hero-copy"><p class="hero-kicker">IB INTELLIGENCE · ECM DATA</p><h1>IPO Fee <em>Benchmark</em></h1><p class="hero-subtitle">KOSPI · KOSDAQ · Underwriting Fee Analytics</p><p class="sub">상장제안서 수수료 산정을 위한 유사 IPO 비교 데이터베이스</p></div></div>
+<div class="hero"><div class="hero-copy"><h1>IPO Fee <em>Data</em></h1><p class="sub">상장제안서 작성 시 수수료 산정</p></div></div>
 <nav class="quick-market" aria-label="상장시장 빠른 선택"><span class="quick-market-label">MARKET VIEW</span><button type="button" class="market-tab active" data-market="">전체 IPO</button><button type="button" class="market-tab" data-market="코스피">코스피</button><button type="button" class="market-tab" data-market="코스닥">코스닥</button></nav>
 <section><div class="topline"><div><h2>① 조정 원하는 조건</h2><div class="sectionhint">조건을 변경하면 수수료 평균과 IPO 목록이 함께 갱신됩니다.</div></div><div class="headactions"><span class="pill">계약상 수수료율 기준</span><button class="btn" id="reset">조건 초기화</button></div></div>
 <div class="filters">
@@ -200,7 +221,7 @@ footer a{color:#8b6a46}
 <div class="field"><label for="track">상장트랙</label><select id="track"><option value="">전체 트랙</option></select></div>
 <div class="field"><label for="industry">주요업종</label><select id="industry"><option value="">전체 업종</option></select></div>
 
-<div class="field"><label for="yearFrom">상장연도 범위</label><div class="range"><select id="yearFrom"></select><span>~</span><select id="yearTo"></select></div></div>
+<div class="field"><label for="dateFrom">상장일 범위</label><div class="range date-range"><input id="dateFrom" type="date" min="2020-01-01" aria-label="상장일 시작 날짜"><span>~</span><input id="dateTo" type="date" min="2020-01-01" aria-label="상장일 종료 날짜"></div></div>
 <div class="field"><label for="amountMin">공모금액 범위 (억원)</label><div class="range"><input id="amountMin" type="number" min="0" step="10" placeholder="최소"><span>~</span><input id="amountMax" type="number" min="0" step="10" placeholder="최대"></div></div>
 <div class="field searchwide"><label for="search">기업명·주관사 검색</label><input id="search" placeholder="회사명 또는 대표주관사를 입력하세요"></div>
 </div></section>
@@ -219,7 +240,7 @@ footer a{color:#8b6a46}
 "use strict";
 var approved=[],all=[],filtered=[],page=1,perPage=15,updated=null;
 var el=function(x){return document.getElementById(x)};
-var controls=["market","track","industry","yearFrom","yearTo","amountMin","amountMax","search"];
+var controls=["market","track","industry","dateFrom","dateTo","amountMin","amountMax","search"];
 function safe(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function number(x){if(x===null||x===undefined||String(x).trim()==="")return null;var n=Number(String(x).replace(/,/g,""));return Number.isFinite(n)?n:null}
 function format(x){return x===null?"—":x.toLocaleString("ko-KR",{maximumFractionDigits:2})}
@@ -227,17 +248,15 @@ function isApproved(r){return ["verified","manual_verified"].indexOf(r.verificat
 function validRate(x){var n=number(x);return n!==null&&n>=0&&n<=20?n:null}
 function avg(items,key){var vals=items.map(function(r){return validRate(r[key])}).filter(function(x){return x!==null});return vals.length?vals.reduce(function(a,b){return a+b},0)/vals.length:null}
 function options(id,values){var target=el(id),current=target.value;target.innerHTML='<option value="">전체 '+(id==="industry"?"업종":"트랙")+"</option>"+values.map(function(v){return '<option value="'+safe(v)+'">'+safe(v)+'</option>'}).join("");target.value=values.indexOf(current)>=0?current:""}
-function initFilters(){options("track",Array.from(new Set(all.map(function(r){return r.listing_track}).filter(Boolean))).sort());options("industry",Array.from(new Set(all.map(function(r){return r.industry}).filter(Boolean))).sort());
-var years=all.map(function(r){return +(r.listing_date||"").slice(0,4)}).filter(function(y){return y>2000&&y<2100});var now=new Date().getFullYear();var min=2020;var max=Math.max(now,years.length?Math.max.apply(null,years):now);
-["yearFrom","yearTo"].forEach(function(id){var vals=['<option value="">전체</option>'];for(var y=min;y<=max;y++)vals.push('<option value="'+y+'">'+y+'년</option>');el(id).innerHTML=vals.join("")});}
-function filter(){var yearFrom=number(el("yearFrom").value),yearTo=number(el("yearTo").value),min=number(el("amountMin").value),max=number(el("amountMax").value),search=el("search").value.trim().toLowerCase();
+function initFilters(){options("track",Array.from(new Set(all.map(function(r){return r.listing_track}).filter(Boolean))).sort());options("industry",Array.from(new Set(all.map(function(r){return r.industry}).filter(Boolean))).sort());}
+function filter(){var dateFrom=el("dateFrom").value,dateTo=el("dateTo").value,min=number(el("amountMin").value),max=number(el("amountMax").value),search=el("search").value.trim().toLowerCase();
 filtered=all.filter(function(r){
-var year=Number((r.listing_date||"").slice(0,4)),amt=number(r.offering_amount_100m);
+var listed=String(r.listing_date||"").trim().replace(/\./g,"-").replace(/\//g,"-"),amt=number(r.offering_amount_100m);
 if(el("market").value&&r.market!==el("market").value)return false;
 if(el("track").value&&r.listing_track!==el("track").value)return false;
 if(el("industry").value&&r.industry!==el("industry").value)return false;
-if(yearFrom!==null&&year<yearFrom)return false;
-if(yearTo!==null&&year>yearTo)return false;
+if(dateFrom&&(!listed||listed<dateFrom))return false;
+if(dateTo&&(!listed||listed>dateTo))return false;
 if(min!==null&&(amt===null||amt<min))return false;
 if(max!==null&&(amt===null||amt>max))return false;
 if(search&&(r.company_name+" "+r.lead_underwriter_1+" "+r.lead_underwriter_2).toLowerCase().indexOf(search)<0)return false;
