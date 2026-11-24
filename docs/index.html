@@ -316,6 +316,21 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 @media(max-width:900px){.selection-actions{flex-direction:column;align-items:stretch}.selection-search-field{max-width:100%}.selection-buttons{justify-content:flex-start}}
 @media(max-width:600px){.selection-tools{margin-top:20px}.selection-head{align-items:flex-start;gap:4px}.selection-search-field label span{display:block}.selection-buttons .btn{flex:1;min-width:135px}.company-search-item .company-date{display:block;margin:2px 0 0}}
 
+
+/* 2026 review inventory: collapsed by default, excluded from averages. */
+.pending-inventory{border-top:1px solid #E6ECE6;margin:24px 0 0;padding-top:17px;color:#4B5E50}
+.pending-inventory summary{display:flex;gap:10px;align-items:center;flex-wrap:wrap;cursor:pointer;font-size:12px;list-style:none}
+.pending-inventory summary::-webkit-details-marker{display:none}
+.pending-inventory summary::before{content:'▸';font-size:11px;color:#66836C}
+.pending-inventory[open] summary::before{content:'▾'}
+.pending-inventory summary strong{color:#344C39;font-size:12.5px}
+.pending-inventory summary .pill{padding:4px 9px}
+.pending-inventory-hint{font-size:11px;color:#889689}
+.pending-inventory-description{font-size:11.5px;color:#718175;line-height:1.75;margin:14px 0}
+.pending-inventory-scroll{max-height:420px;overflow:auto;border-radius:3px}
+.pending-inventory-scroll table{min-width:690px}
+.pending-inventory-scroll td,.pending-inventory-scroll th{padding:10px 12px;font-size:11px}
+
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
@@ -370,6 +385,15 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
     <li><span>3)</span><p><strong>원문 확인</strong> 성과수수료 상한은 실제 지급이 확정된 수수료율이 아닙니다. 또한 계약에 따라 의무인수금액 등이 산정 기준에 포함될 수 있으므로 최종 제안서 작성 전 DART 원문을 확인해 주세요.</p></li>
   </ol>
 </div>
+
+<details class="pending-inventory" id="pending2026">
+  <summary><strong>2026년 IPO 수집 현황</strong><span class="pill" id="pendingCount">조회 중</span><span class="pending-inventory-hint">수수료 검증 중인 기업 확인</span></summary>
+  <p class="pending-inventory-description">KIND 신규상장은 확인되었으나 최종 계약조건 검증이 남은 기업입니다. 아래 기업은 평균 수수료율 계산이나 CSV 다운로드 대상에 포함되지 않습니다.</p>
+  <div class="tablewrap pending-inventory-scroll"><table>
+    <thead><tr><th>회사명</th><th>상장일</th><th>시장</th><th>주요업종</th><th>상장주선인 (KIND)</th></tr></thead>
+    <tbody id="pendingBody"><tr><td colspan="5">검토 중인 IPO를 불러오는 중입니다.</td></tr></tbody>
+  </table></div>
+</details>
 </section>
 <footer>자료 출처: <a href="https://kind.krx.co.kr/listinvstg/listingcompany.do?method=searchListingTypeMain" target="_blank" rel="noopener">KRX KIND</a> 및 <a href="https://opendart.fss.or.kr/" target="_blank" rel="noopener">OpenDART</a>. 공시 원문 근거 없는 수치는 평균에 포함되지 않습니다. 이 사이트는 IPO 제안서 작성을 지원하는 참고 도구이며, 최종 수수료 산정은 개별 계약조건과 내부 기준에 따릅니다.</footer>
 </main><script>
@@ -491,6 +515,22 @@ el("sync").textContent="마지막 데이터 갱신 "+(updated||"미확인");init
 el("sync").textContent="DB 읽기 오류";
 el("tbody").innerHTML='<tr><td colspan="11" style="padding:30px;text-align:center">데이터 조회 실패: '+safe(e.message)+'</td></tr>';
 });
+fetch("review.json",{cache:"no-store"}).then(function(resp){
+if(!resp.ok)throw new Error("review.json HTTP "+resp.status);
+return resp.json();
+}).then(function(data){
+var review=(data.records||[]).filter(function(r){
+return String(r.listing_date||"").startsWith("2026-")&&!isApproved(r);
+}).sort(function(a,b){return String(b.listing_date||"").localeCompare(String(a.listing_date||""))});
+el("pendingCount").textContent=review.length+"건";
+el("pendingBody").innerHTML=review.length?review.map(function(r){
+return "<tr><td>"+safe(r.company_name)+"</td><td>"+safe(r.listing_date)+"</td><td>"+safe(r.market)+"</td><td>"+safe(r.industry||"—")+"</td><td>"+safe(r.lead_underwriter_1||"—")+"</td></tr>";
+}).join(""):'<tr><td colspan="5">현재 검토 대기 기업이 없습니다.</td></tr>';
+}).catch(function(e){
+el("pendingCount").textContent="불러오기 실패";
+el("pendingBody").innerHTML='<tr><td colspan="5">'+safe(e.message)+'</td></tr>';
+});
+
 })();
 </script></body><!-- Deployment verified against GitHub Pages configuration -->
 </html>
