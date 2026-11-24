@@ -257,56 +257,42 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 @media(max-width:600px){.metric{min-height:146px}}
 
 
-/* Compact how-it-works steps and numbered methodology, using existing typography. */
-.logic-strip{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:20px;border:1px solid #E6ECE5;border-left:3px solid #9CB69A;background:#FBFCFB;padding:15px 19px;margin:0 0 22px}
-.logic-label{font-size:12px;font-weight:700;white-space:nowrap;color:#45694A;letter-spacing:-.02em}
-.logic-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0;padding:0}
-.logic-steps li{display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.65;color:#747D74;word-break:keep-all}
-.logic-steps .logic-num{color:#658B65;font-weight:800;flex-shrink:0}
-.logic-steps strong{display:block;color:#29382D;font-weight:700;margin-bottom:2px;font-size:12.5px}
-.calculation-notes{border-top:1px solid #E8EDE6;padding-top:17px;margin-top:18px}
-.calculation-notes-title{font-size:12px;font-weight:700;color:#4D6150;margin-bottom:9px}
-.calculation-notes ol{list-style:none;display:grid;gap:7px;margin:0;padding:0}
-.calculation-notes li{display:flex;gap:9px;align-items:flex-start;font-size:11.5px;line-height:1.8;color:#757F76}
-.calculation-notes li>span{flex:0 0 18px;color:#69866B;font-weight:700}
+/* Editorial guide: restrained, airy, no nested cards. */
+.logic-strip{display:grid;grid-template-columns:195px minmax(0,1fr);gap:23px;align-items:center;margin:1px 0 24px;padding:18px 0 20px;background:transparent;border:0;border-bottom:1px solid #DDE6DE;border-radius:0;box-shadow:none}
+.logic-intro{margin:0}
+.logic-eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:.15em;color:#829788;margin-bottom:4px}
+.logic-label{display:block;font-size:14px;color:#26362B;font-weight:750;white-space:normal;margin-bottom:5px}
+.logic-intro p{font-size:11.5px;line-height:1.65;color:#7C877F;margin:0;word-break:keep-all}
+.logic-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none}
+.logic-steps li{display:flex;align-items:flex-start;gap:10px;padding:3px 14px;background:transparent;border:0;border-left:1px solid #E4E9E4;border-radius:0;font-size:11.5px;line-height:1.75;color:#6B766D;word-break:keep-all}
+.logic-steps .logic-num{flex:0 0 auto;color:#799880;font-size:11px;letter-spacing:.03em;font-weight:750;line-height:1.6}
+.logic-steps strong{display:block;margin:0 0 4px;color:#2F3931;font-size:12.5px;font-weight:750}
+.section-heading{display:inline-flex;align-items:center;gap:11px;margin:0}
+.section-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 32px;background:#F0F5F0;border-radius:6px;color:#597C64}
+.result-heading{margin-top:26px}
+.calculation-notes{border-top:1px solid #E8ECE7;padding-top:16px;margin-top:19px}
+.calculation-notes-title{color:#4B6050;font-size:12.5px;font-weight:700;margin:0 0 10px}
+.calculation-notes ol{list-style:none;display:grid;gap:8px;margin:0;padding:0}
+.calculation-notes li{display:flex;gap:9px;align-items:flex-start;font-size:11.6px;line-height:1.75;color:#717B72;word-break:keep-all}
+.calculation-notes li>span{flex:0 0 18px;color:#6D8971;font-weight:700}
 .calculation-notes li p{margin:0}
-.calculation-notes li strong{color:#4E5D51;font-weight:700;margin-right:5px}
-@media(max-width:1000px){.logic-strip{grid-template-columns:1fr;gap:10px}.logic-steps{gap:12px}}
-@media(max-width:700px){.logic-steps{grid-template-columns:1fr;gap:8px}.logic-strip{padding:14px;margin-bottom:18px}.logic-steps strong{display:inline;margin-right:6px}.calculation-notes li{font-size:11.5px}}
-
-/* Explanation panel: soft sage background distinct from the white analysis cards. */
-.logic-strip{display:block;background:#EFF5F0;border:1px solid #D9E7D9;border-left:3px solid #8EAB90;border-radius:6px;padding:21px 23px 23px;margin:0 0 24px;box-shadow:none}
-.logic-intro{margin:0 0 16px}
-.logic-eyebrow{display:block;font-size:10px;font-weight:700;letter-spacing:.12em;color:#739478;margin-bottom:5px}
-.logic-label{display:block;font-size:15px;font-weight:750;color:#2F4837;white-space:normal}
-.logic-intro p{margin:5px 0 0;font-size:12px;line-height:1.7;color:#667C6C;word-break:keep-all}
-.logic-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0;padding:0}
-.logic-steps li{background:rgba(255,255,255,.75);border:1px solid #E2EBE2;border-radius:4px;padding:15px 13px;display:flex;gap:9px;font-size:12px;line-height:1.8;color:#627466;word-break:keep-all}
-.logic-steps .logic-num{color:#718F72;font-size:13px;font-weight:800;flex:0 0 auto}
-.logic-steps strong{display:block;font-size:13px;margin:0 0 6px;color:#263E2C;font-weight:750}
-.calculation-notes{border-top:1px solid #E5EBE4;margin-top:18px;padding-top:18px}
-.calculation-notes-title{font-size:13px;color:#3F6147;margin-bottom:11px}
-.calculation-notes ol{gap:10px}
-.calculation-notes li{font-size:12px;line-height:1.75;color:#6D7B70;word-break:keep-all}
-.calculation-notes li>span{color:#638B68;flex:0 0 18px}
-.calculation-notes li strong{color:#435F4A}
-@media(max-width:900px){.logic-steps{grid-template-columns:1fr}.logic-steps li{padding:13px 14px}.logic-strip{padding:18px}}
-@media(max-width:600px){.logic-strip{padding:15px;margin-bottom:18px}.logic-steps strong{display:block;margin-right:0}.logic-intro p,.calculation-notes li{font-size:11.5px}}
+.calculation-notes li strong{color:#506353;margin-right:5px}
+@media(max-width:950px){.logic-strip{grid-template-columns:1fr;gap:13px}.logic-steps li:first-child{border-left:0;padding-left:0}}
+@media(max-width:650px){.logic-strip{padding:12px 0 16px;margin-bottom:20px}.logic-steps{grid-template-columns:1fr;gap:12px}.logic-steps li,.logic-steps li:first-child{border:0;padding:0;gap:9px}.logic-steps strong{display:inline;margin:0 8px 0 0}.section-heading{gap:9px}.section-icon{width:29px;height:29px;flex-basis:29px}.calculation-notes li{font-size:11.2px}}
 
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
 <div class="hero"><div class="hero-copy"><h1>IPO Fee <em>Data</em></h1><p class="sub">상장제안서 작성 시 수수료 산정</p></div></div>
 <nav class="quick-market" aria-label="상장시장 빠른 선택"><span class="quick-market-label">MARKET VIEW</span><button type="button" class="market-tab active" data-market="">전체 IPO</button><button type="button" class="market-tab" data-market="코스피">코스피</button><button type="button" class="market-tab" data-market="코스닥">코스닥</button></nav>
-<div class="logic-strip" aria-label="페이지 이용 방법">
-  <div class="logic-intro"><span class="logic-eyebrow">HOW IT WORKS</span><strong class="logic-label">이 페이지는 이렇게 활용해요</strong><p>유사 IPO의 실제 공시자료를 바탕으로 수수료율을 비교하고, 평균을 산정한 기업도 함께 확인할 수 있습니다.</p></div>
+<div class="logic-strip" aria-label="페이지 이용 안내">
+  <div class="logic-intro"><span class="logic-eyebrow">GUIDE</span><strong class="logic-label">이용 안내</strong><p>원하는 IPO만 골라서 수수료 평균을 비교하고, 평균을 계산한 기업도 바로 확인할 수 있습니다.</p></div>
   <ol class="logic-steps">
-    <li><span class="logic-num">1)</span><span><strong>조건 조정</strong>비교하고 싶은 IPO의 시장, 상장일, 업종, 공모금액 등을 선택해 유사기업을 추려요.</span></li>
-    <li><span class="logic-num">2)</span><span><strong>평균 수수료 산정</strong>선택 조건에 맞는 기업 중 수수료율이 확인된 사례만 모아 기본수수료율과 성과수수료 상한을 각각 평균 내요.</span></li>
-    <li><span class="logic-num">3)</span><span><strong>IPO 리스트 확인</strong>평균 계산에 사용된 IPO 기업과 수수료율, DART 근거를 확인하고 목록을 CSV로 내려받을 수 있어요.</span></li>
+    <li><span class="logic-num">01</span><span><strong>분석 대상 선택</strong>시장·상장일·업종·공모금액을 정해 비교할 IPO를 골라요.</span></li>
+    <li><span class="logic-num">02</span><span><strong>평균 수수료 확인</strong>공시로 확인된 기본수수료율과 성과수수료 상한을 각각 평균 내요.</span></li>
+    <li><span class="logic-num">03</span><span><strong>근거 기업 확인</strong>계산에 포함된 IPO와 DART 원문을 보고 CSV로 저장할 수 있어요.</span></li>
   </ol>
-</div>
-<section><div class="topline"><div><h2>1) 조건 조정</h2><div class="sectionhint">조건을 변경하면 수수료 평균과 IPO 목록이 함께 갱신됩니다.</div></div><div class="headactions"><span class="pill">계약상 수수료율 기준</span><button class="btn" id="reset">조건 초기화</button></div></div>
+</div><section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="#fff"/><circle cx="15" cy="17" r="2" fill="#fff"/></svg></span><span>조건 조정</span></h2><div class="sectionhint">조건을 변경하면 수수료 평균과 IPO 목록이 함께 갱신됩니다.</div></div><div class="headactions"><span class="pill">계약상 수수료율 기준</span><button class="btn" id="reset">조건 초기화</button></div></div>
 <div class="filters">
 <div class="field"><label for="market">상장시장</label><select id="market"><option value="">전체 시장</option><option>코스닥</option><option>코스피</option></select></div>
 <div class="field"><label for="track">상장트랙</label><select id="track"><option value="">전체 트랙</option></select></div>
@@ -316,11 +302,11 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 <div class="field"><label for="amountMin">공모금액 범위 (억원)</label><div class="range"><input id="amountMin" type="number" min="0" step="10" placeholder="최소"><span>~</span><input id="amountMax" type="number" min="0" step="10" placeholder="최대"></div></div>
 <div class="field searchwide"><label for="search">기업명·주관사 검색</label><input id="search" placeholder="회사명 또는 대표주관사를 입력하세요"></div>
 </div></section>
-<div class="result-heading"><h2>2) 평균 수수료 산정</h2><p class="sectionhint">선택 조건에 해당하는 IPO의 기본수수료율과 성과수수료 상한을 각각 계산합니다.</p></div>
+<div class="result-heading"><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2m4 0h2m-8 4h2m4 0h2"/></svg></span><span>평균 수수료 산정</span></h2><p class="sectionhint">선택 조건에 해당하는 IPO의 기본수수료율과 성과수수료 상한을 각각 계산합니다.</p></div>
 <div class="stats"><div class="metric"><span>평균 기본수수료율</span><strong id="baseMean" class="empty">—</strong><small id="baseSample">산출 가능한 IPO 0건</small></div>
 <div class="metric"><span>평균 성과수수료 상한</span><strong id="perfMean" class="empty">—</strong><small id="perfSample">산출 가능한 IPO 0건 · 실제 지급률과 다름</small></div>
 </div>
-<section><div class="topline"><div><h2>3) 산출 대상 IPO 리스트</h2><p class="sectionhint">2번 평균을 계산할 때 사용한 IPO 목록입니다. 조건에 따라 목록과 CSV 파일도 바뀝니다.</p></div><div class="headactions"><span id="numRecords" class="pill">0건</span><button class="btn primary" id="download">IPO 목록 다운로드 (CSV)</button></div></div>
+<section><div class="topline"><div><h2 class="section-heading"><span class="section-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01" stroke-width="3"/></svg></span><span>산출 대상 IPO 리스트</span></h2><p class="sectionhint">위 평균 계산에 사용된 IPO 목록입니다. 조건을 바꾸면 목록과 CSV 파일도 함께 변경됩니다.</p></div><div class="headactions"><span id="numRecords" class="pill">0건</span><button class="btn primary" id="download">IPO 목록 다운로드 (CSV)</button></div></div>
 <div class="tablewrap"><table><thead><tr><th>회사명</th><th>상장일</th><th>상장시장</th><th>상장트랙</th><th>주요업종</th><th>대표주관사</th><th>공모금액(억원)</th><th>기본수수료</th><th>성과상한</th><th>DART</th></tr></thead><tbody id="tbody"><tr><td colspan="10" style="text-align:center;color:#71839e;padding:35px">데이터를 불러오는 중입니다.</td></tr></tbody></table></div>
 <div class="tablefoot"><span id="pageinfo">—</span><div class="pager"><button id="prev" disabled>이전</button><button id="next" disabled>다음</button></div></div>
 <div class="calculation-notes" aria-label="수수료 산정 기준 및 유의사항">
