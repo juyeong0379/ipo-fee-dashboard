@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="공식 KIND·DART 기반 IPO 수수료 벤치마크: 시장·업종·상장트랙·공모규모·연도 필터, 계약상 기본수수료와 성과수수료 상한">
-<title>IPO Fee Data | 상장제안서 작성 시 수수료 산정</title>
+<title>IPO Proposal Lab | IPO 제안서 데이터 플랫폼</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root{font-family:Inter,Arial,"Pretendard","Noto Sans KR",sans-serif;--navy:#172b4a;--blue:#2563eb;--ink:#172337;--muted:#64748b;--border:#e1e8f1;--bg:#f5f8fc;--mint:#0a8f72}
@@ -331,9 +331,48 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
 .pending-inventory-scroll table{min-width:690px}
 .pending-inventory-scroll td,.pending-inventory-scroll th{padding:10px 12px;font-size:11px}
 
+
+/* IPO Proposal Lab — editorial navigation, independent of the fee calculator */
+[hidden]{display:none!important}
+#proposal-header{background:#fff;border-bottom:0;color:#243b31}
+#proposal-header .lab-inner{max-width:1220px;margin:auto;padding:25px 25px 0}
+.lab-top{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:.1em;color:#6b776e}
+.lab-brand{font-weight:800;letter-spacing:.12em;color:#365b45}
+.lab-mast{text-align:center;padding:20px 0 23px}
+.lab-mast h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(36px,6vw,64px);font-weight:600;line-height:1.12;color:#273c30;letter-spacing:-.045em;margin:0}
+.lab-mast p{margin:9px 0 0;font-size:12px;color:#65756b;word-break:keep-all}
+.lab-mast .lab-kicker{font-family:Georgia,serif;font-style:italic;color:#92774d;font-size:15px;margin-top:9px}
+.lab-nav{display:flex;align-items:stretch;gap:0;overflow-x:auto;scrollbar-width:thin;border-top:3px double #36473b;border-bottom:1px solid #d6ddd5;white-space:nowrap}
+.lab-nav button,.lab-subnav button{font:inherit;cursor:pointer;border:0;background:none;color:#46534a;white-space:nowrap;flex-shrink:0}
+.lab-nav button{font-size:13px;font-weight:650;padding:15px 12px;border-bottom:3px solid transparent;min-height:48px}
+.lab-nav button.active{border-bottom-color:#a58a56;color:#253c2b;background:#f8f9f5}
+.lab-nav button:hover,.lab-subnav button:hover{color:#273e2e;background:#f5f7f3}
+.lab-subrow{display:flex;align-items:center;gap:16px;border-bottom:1px solid #a58a56;padding:0;min-height:46px}
+.lab-sub-label{font-size:10px;letter-spacing:.13em;font-weight:750;color:#92774d;flex-shrink:0}
+.lab-subnav{display:flex;overflow-x:auto;scrollbar-width:thin;gap:4px;align-items:center;min-width:0}
+.lab-subnav button{font-size:12px;padding:10px 12px;font-weight:500;border-radius:2px}
+.lab-subnav button.active{background:#edf2eb;color:#315c40;font-weight:750}
+.lab-panel{max-width:1220px;margin:auto;padding:29px 25px 72px}
+.lab-section-label{font-size:11px;letter-spacing:.14em;font-weight:700;color:#92774d;margin:0 0 10px}
+.lab-panel h2{font-size:26px;color:#283f31;letter-spacing:-.05em;margin:0 0 10px}
+.lab-panel .lab-desc{font-size:13px;color:#6d796e;margin:0 0 26px;line-height:1.8}
+.lab-empty{background:#fff;border:1px solid #e2e7df;border-top:2px solid #a58a56;padding:45px 25px;text-align:center;min-height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lab-empty strong{font-size:16px;color:#425348}.lab-empty p{font-size:12px;color:#748076;margin:10px 0 0}
+.lab-homegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lab-homecard{text-align:left;display:block;border:1px solid #e2e7df;background:#fff;border-radius:2px;padding:20px;color:#293d31;cursor:pointer;font:inherit}
+.lab-homecard:hover{border-color:#9aab98}.lab-homecard strong{display:block;font-size:16px;margin:8px 0}.lab-homecard small{color:#778478;font-size:12px;line-height:1.6;display:block}.lab-homecard .lab-status{font-size:10px;letter-spacing:.08em;color:#92774d;font-weight:700}.lab-homecard.ready{border-top:2px solid #50785c}
+#fee-panel .hero{margin-top:0}
+@media(max-width:650px){#proposal-header .lab-inner{padding:17px 16px 0}.lab-top{font-size:10px;letter-spacing:.02em}.lab-mast{padding:22px 0 20px}.lab-mast p{font-size:11px;line-height:1.7}.lab-nav button{font-size:12px;padding:13px 11px}.lab-subrow{gap:7px}.lab-subnav button{font-size:11px;padding:10px 8px}.lab-sub-label{font-size:9px}.lab-panel{padding:24px 16px 55px}.lab-homegrid{grid-template-columns:1fr}.lab-panel h2{font-size:23px}}
+
 </style></head><body>
-<header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
-<main>
+<header id="proposal-header"><div class="lab-inner">
+<div class="lab-top"><span class="lab-brand">IB INTELLIGENCE / ECM</span><span id="sync" class="meta">데이터 확인 중</span></div>
+<div class="lab-mast"><h1>IPO PROPOSAL LAB</h1><div class="lab-kicker">Data · Research · Execution</div><p>IPO 제안서 작성에 필요한 공통 데이터를 한곳에서 탐색하고 활용하는 업무 지원 플랫폼</p></div>
+<nav id="lab-nav" class="lab-nav" aria-label="제안서 대분류"></nav>
+<div id="lab-subrow" class="lab-subrow"><span class="lab-sub-label">DATA</span><nav id="lab-subnav" class="lab-subnav" aria-label="세부 데이터 메뉴"></nav></div>
+</div></header>
+<div id="lab-other" class="lab-panel" hidden aria-live="polite"></div>
+<main id="fee-panel">
 <div class="hero"><div class="hero-copy"><h1>IPO Fee <em>Data</em></h1><p class="sub">상장제안서 작성 시 수수료 산정</p></div></div>
 <nav class="quick-market" aria-label="상장시장 빠른 선택"><span class="quick-market-label">MARKET VIEW</span><button type="button" class="market-tab active" data-market="">전체 IPO</button><button type="button" class="market-tab" data-market="코스피">코스피</button><button type="button" class="market-tab" data-market="코스닥">코스닥</button></nav>
 <div class="logic-strip" aria-label="페이지 이용 안내">
@@ -531,6 +570,44 @@ el("pendingCount").textContent="불러오기 실패";
 el("pendingBody").innerHTML='<tr><td colspan="6">'+safe(e.message)+'</td></tr>';
 });
 
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var groups=[
+{id:"home",label:"홈",en:"OVERVIEW",items:[]},
+{id:"credentials",label:"주관사 역량",en:"UNDERWRITER CREDENTIALS",items:["증권사 현황","IPO 수행 실적","리그테이블","유사기업 상장 사례","전담 인력"]},
+{id:"industry",label:"산업·기업 분석",en:"INDUSTRY & COMPANY",items:["산업 규모 및 성장률","산업 동향","기업 현황","경쟁사 비교"]},
+{id:"equity",label:"Equity Story",en:"EQUITY STORY",items:["투자포인트","성장 전략","유사기업 투자포인트","주요 리스크"]},
+{id:"valuation",label:"Valuation",en:"VALUATION",items:["비교기업 선정","비교기업 재무지표","멀티플 통계","공모가 산정 사례"]},
+{id:"execution",label:"IPO 실행 전략",en:"IPO EXECUTION",items:["상장시장·트랙","공모 구조","상장 소요기간","상장심사 사례"]},
+{id:"sales",label:"Sales & Marketing",en:"SALES & MARKETING",items:["수요예측 경쟁률","기관투자자","의무보유확약","상장 후 주가 추이"]},
+{id:"fees",label:"수수료 및 계약조건",en:"FEES & TERMS",items:["IPO 수수료 통계","주관사 구성","기타 계약조건"]}
+];
+var nav=document.getElementById("lab-nav"),sub=document.getElementById("lab-subnav"),subrow=document.getElementById("lab-subrow"),other=document.getElementById("lab-other"),fee=document.getElementById("fee-panel");
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function show(id,index,write){
+var g=groups.find(function(x){return x.id===id})||groups[7];
+index=Number.isInteger(index)&&index>=0&&index<g.items.length?index:0;
+nav.innerHTML=groups.map(function(x){return '<button type="button" data-group="'+x.id+'" class="'+(x.id===g.id?'active':'')+'"'+(x.id===g.id?' aria-current="page"':'')+'>'+esc(x.label)+'</button>'}).join("");
+subrow.hidden=!g.items.length;
+sub.innerHTML=g.items.map(function(x,i){return '<button type="button" data-sub="'+i+'" class="'+(i===index?'active':'')+'"'+(i===index?' aria-current="page"':'')+'>'+esc(x)+'</button>'}).join("");
+nav.querySelector(".active").scrollIntoView({block:"nearest",inline:"nearest"});
+var sb=sub.querySelector(".active");if(sb)sb.scrollIntoView({block:"nearest",inline:"nearest"});
+var isFee=g.id==="fees"&&index===0;fee.hidden=!isFee;other.hidden=isFee;
+if(g.id==="home"){
+other.innerHTML='<div class="lab-section-label">OVERVIEW</div><h2>제안서 데이터 라이브러리</h2><p class="lab-desc">제안서 공통 구성에 따라 필요한 데이터 영역을 선택하세요. 현재 IPO 수수료 통계만 이용 가능하며 나머지 메뉴는 구축 예정입니다.</p><div class="lab-homegrid">'+groups.slice(1).map(function(x){return '<button type="button" class="lab-homecard '+(x.id==="fees"?"ready":"")+'" data-home="'+x.id+'"><span class="lab-status">'+(x.id==="fees"?"01 / 이용 가능":"준비 중")+'</span><strong>'+esc(x.label)+'</strong><small>'+esc(x.items.join(" · "))+'</small></button>'}).join("")+'</div>';
+}else if(!isFee){
+other.innerHTML='<div class="lab-section-label">'+esc(g.en)+'</div><h2>'+esc(g.items[index])+'</h2><p class="lab-desc">'+esc(g.label)+' / '+esc(g.items[index])+'</p><div class="lab-empty"><strong>데이터 준비 중</strong><p>아직 데이터가 연결되지 않은 영역입니다.</p></div>';
+}
+if(write)history.replaceState(null,"","#"+g.id+(g.items.length?"/"+index:""));
+}
+nav.addEventListener("click",function(e){var b=e.target.closest("[data-group]");if(b)show(b.dataset.group,0,true)});
+sub.addEventListener("click",function(e){var b=e.target.closest("[data-sub]"),a=nav.querySelector(".active");if(b&&a)show(a.dataset.group,Number(b.dataset.sub),true)});
+other.addEventListener("click",function(e){var b=e.target.closest("[data-home]");if(b)show(b.dataset.home,0,true)});
+function fromHash(){var parts=location.hash.slice(1).split("/");show(parts[0]||"fees",Number(parts[1]||0),false)}
+window.addEventListener("hashchange",fromHash);fromHash();
 })();
 </script></body><!-- Deployment verified against GitHub Pages configuration -->
 </html>
