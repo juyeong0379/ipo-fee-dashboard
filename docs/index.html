@@ -210,6 +210,31 @@ footer a{color:#117a51}
 .date-range input[type="date"]{flex:1 1 0;min-width:0;width:100%;font-variant-numeric:tabular-nums;padding:11px 9px}
 .date-range span{flex:0 0 auto}
 @media(max-width:700px){.hero h1{font-size:clamp(43px,12vw,60px)}.hero .sub{font-size:13px}.date-range input[type="date"]{font-size:12px;padding:10px 6px}}
+
+/* Light-lime accent update; preserve all existing typography and layout. */
+:root{--lime:#B6E36A;--lime-strong:#88B73D;--lime-dark:#446625;--lime-soft:#F7FBEF;--lime-border:#D9EDB5}
+.hero h1 em{color:var(--lime-strong)}
+.hero .sub{color:#667C55}
+.brand .logo{background:var(--lime);color:#27391B}
+.brand .pill{color:var(--lime-dark);border-left-color:var(--lime-border)}
+.hero::after{border-bottom-color:var(--lime);border-top-color:#283B28}
+.quick-market{border-bottom-color:var(--lime-border)}
+.quick-market-label{color:var(--lime-dark)}
+.market-tab.active{border-bottom-color:var(--lime-strong);color:#263A21}
+.market-tab:hover{border-bottom-color:var(--lime)}
+.pill{color:var(--lime-dark);background:var(--lime-soft);border-color:var(--lime-border)}
+.btn.primary{background:var(--lime);border-color:var(--lime);color:#26391B}
+.btn.primary:hover{background:#A4D453;border-color:#A4D453;color:#26391B}
+.metric{border-top-color:var(--lime)}
+.metric:nth-child(2){background:var(--lime-soft)}
+.metric strong{color:#293926}
+.result-heading h2{color:#2A3625}
+td a,footer a{color:#557B2A}
+tbody tr:hover{background:#FCFEF7}
+thead{background:#F7FAF0}
+th{border-bottom-color:var(--lime)}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline-color:var(--lime-strong)}
+
 </style></head><body>
 <header><div class="inner"><div class="brand"><span class="logo">IB</span><span>IB Intelligence</span><span class="pill">IPO FEE MONITORING</span></div><span id="sync" class="meta">데이터 확인 중</span></div></header>
 <main>
