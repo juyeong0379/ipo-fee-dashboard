@@ -126,7 +126,7 @@ function validRate(x){var n=number(x);return n!==null&&n>=0&&n<=20?n:null}
 function avg(items,key){var vals=items.map(function(r){return validRate(r[key])}).filter(function(x){return x!==null});return vals.length?vals.reduce(function(a,b){return a+b},0)/vals.length:null}
 function options(id,values){var target=el(id),current=target.value;target.innerHTML='<option value="">전체 '+(id==="industry"?"업종":"트랙")+"</option>"+values.map(function(v){return '<option value="'+safe(v)+'">'+safe(v)+'</option>'}).join("");target.value=values.indexOf(current)>=0?current:""}
 function initFilters(){options("track",Array.from(new Set(all.map(function(r){return r.listing_track}).filter(Boolean))).sort());options("industry",Array.from(new Set(all.map(function(r){return r.industry}).filter(Boolean))).sort());
-var years=all.map(function(r){return +(r.listing_date||"").slice(0,4)}).filter(function(y){return y>2000&&y<2100});var now=new Date().getFullYear();var min=years.length?Math.min.apply(null,years):now-3;var max=years.length?Math.max.apply(null,years):now;
+var years=all.map(function(r){return +(r.listing_date||"").slice(0,4)}).filter(function(y){return y>2000&&y<2100});var now=new Date().getFullYear();var min=2020;var max=Math.max(now,years.length?Math.max.apply(null,years):now);
 ["yearFrom","yearTo"].forEach(function(id){var vals=['<option value="">전체</option>'];for(var y=min;y<=max;y++)vals.push('<option value="'+y+'">'+y+'년</option>');el(id).innerHTML=vals.join("")});}
 function filter(){var yearFrom=number(el("yearFrom").value),yearTo=number(el("yearTo").value),min=number(el("amountMin").value),max=number(el("amountMax").value),search=el("search").value.trim().toLowerCase();
 filtered=all.filter(function(r){
