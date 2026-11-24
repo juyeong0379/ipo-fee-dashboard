@@ -390,8 +390,8 @@ input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{ou
   <summary><strong>2026년 IPO 수집 현황</strong><span class="pill" id="pendingCount">조회 중</span><span class="pending-inventory-hint">수수료 검증 중인 기업 확인</span></summary>
   <p class="pending-inventory-description">KIND 신규상장은 확인되었으나 최종 계약조건 검증이 남은 기업입니다. 아래 기업은 평균 수수료율 계산이나 CSV 다운로드 대상에 포함되지 않습니다.</p>
   <div class="tablewrap pending-inventory-scroll"><table>
-    <thead><tr><th>회사명</th><th>상장일</th><th>시장</th><th>주요업종</th><th>상장주선인 (KIND)</th></tr></thead>
-    <tbody id="pendingBody"><tr><td colspan="5">검토 중인 IPO를 불러오는 중입니다.</td></tr></tbody>
+    <thead><tr><th>회사명</th><th>상장일</th><th>시장</th><th>주요업종</th><th>공모금액(억원)</th><th>상장주선인 (KIND)</th></tr></thead>
+    <tbody id="pendingBody"><tr><td colspan="6">검토 중인 IPO를 불러오는 중입니다.</td></tr></tbody>
   </table></div>
 </details>
 </section>
@@ -524,11 +524,11 @@ return String(r.listing_date||"").startsWith("2026-")&&!isApproved(r);
 }).sort(function(a,b){return String(b.listing_date||"").localeCompare(String(a.listing_date||""))});
 el("pendingCount").textContent=review.length+"건";
 el("pendingBody").innerHTML=review.length?review.map(function(r){
-return "<tr><td>"+safe(r.company_name)+"</td><td>"+safe(r.listing_date)+"</td><td>"+safe(r.market)+"</td><td>"+safe(r.industry||"—")+"</td><td>"+safe(r.lead_underwriter_1||"—")+"</td></tr>";
-}).join(""):'<tr><td colspan="5">현재 검토 대기 기업이 없습니다.</td></tr>';
+return "<tr><td>"+safe(r.company_name)+"</td><td>"+safe(r.listing_date)+"</td><td>"+safe(r.market)+"</td><td>"+safe(r.industry||"—")+"</td><td class=\"mono\">"+format(number(r.offering_amount_100m))+"</td><td>"+safe(r.lead_underwriter_1||"—")+"</td></tr>";
+}).join(""):'<tr><td colspan="6">현재 검토 대기 기업이 없습니다.</td></tr>';
 }).catch(function(e){
 el("pendingCount").textContent="불러오기 실패";
-el("pendingBody").innerHTML='<tr><td colspan="5">'+safe(e.message)+'</td></tr>';
+el("pendingBody").innerHTML='<tr><td colspan="6">'+safe(e.message)+'</td></tr>';
 });
 
 })();
