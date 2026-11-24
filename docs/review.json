@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-11-24T13:41:33+09:00",
+  "data_policy": "pending_not_in_average",
+  "records": [
+    {
+      "company_name": "넥스아이",
+      "listing_date": "2026-11-12",
+      "market": "코스닥",
+      "listing_track": "기술평가특례(검증필요)",
+      "industry": "자연과학 및 공학 연구개발업",
+      "lead_underwriter_1": "한국투자증권(주)",
+      "lead_underwriter_2": "",
+      "offering_amount_100m": "",
+      "base_fee_pct": "4.5",
+      "performance_fee_cap_pct": "",
+      "stock_code": "493410",
+      "dart_rcp_no": "20261030000467",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261030000467",
+      "verification_status": "needs_review"
+    }
+  ]
+}
